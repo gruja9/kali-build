@@ -1,2 +1,6 @@
 ---
-- include: "configure-sudoers.yml"
+- include_tasks: "configure-sudoers.yml"
+- include_tasks: "set-timezone.yml"
+- include_tasks: "update-system.yml"
+- include_tasks: "create-files-dirs.yml"
+- include_tasks: "allow-vmware-mount.yml"

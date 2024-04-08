@@ -1,0 +1,48 @@
+---
+- name: "Installing Necessary Packages"
+  package:
+    name:
+      - git
+      - python3-pip
+      - make
+      - build-essential
+      - libssl-dev
+      - zlib1g-dev
+      - libbz2-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - wget
+      - curl
+      - llvm
+      - libncurses5-dev
+      - xz-utils
+      - tk-dev
+      - libxml2-dev
+      - libxmlsec1-dev
+      - libffi-dev
+      - liblzma-dev
+    state: latest
+  become: true
+  become_method: sudo
+
+- name: "Installing Pyenv"
+  block:
+    - name: "Downloading the installation script"
+      get_url:
+        url: https://pyenv.run
+        dest: "{{ ansible_env.HOME }}/pyenv.sh"
+
+    - name: "Running the installation script"
+      script:
+        cmd: "{{ ansible_env.HOME }}/pyenv.sh"
+
+    - name: "Removing the installation script"
+      file:
+        path: "{{ ansible_env.HOME }}/pyenv.sh"
+        state: absent
+
+- name: "Installing desired Python versions"
+  shell: "{{ ansible_env.HOME }}/.pyenv/bin/pyenv install {{ item.version }}"
+  loop:
+    - {version: "3.10.9"}
+    - {version: "2.7.18"}

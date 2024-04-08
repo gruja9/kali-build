@@ -1,0 +1,7 @@
+---
+- name: Allow users to mount VMWare-shared folders without sudo
+  become: true
+  lineinfile:
+    dest: /etc/fuse.conf
+    search_string: "#user_allow_other"
+    line: "user_allow_other"

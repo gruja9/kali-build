@@ -1,0 +1,16 @@
+---
+- name: Create necessary directories
+  file:
+    path: "{{ item.name }}"
+    state: "{{ item.type }}"
+  loop:
+    - { name: "{{ ansible_env.HOME }}/Pentests", type: "directory"}
+    - { name: "{{ ansible_env.HOME }}/vmware-shared", type: "directory"}
+
+- name: Copy over files
+  copy:
+    src: "{{ role_path }}/files/{{ item.filename }}"
+    dest: "{{ ansible_env.HOME }}"
+  loop:
+    - {filename: "remove-history.sh"}
+    - {filename: "tmux_start_logging.sh"}

@@ -1,0 +1,11 @@
+---
+- name: "Installing Packages"
+  package:
+    name:
+      - gobuster
+      - feroxbuster
+      - remmina
+      - crowbar
+    state: latest
+  become: true
+  become_method: sudo

@@ -5,18 +5,11 @@
   become_method: sudo
 
 - name: "Upgrade all packages"
-  apt: upgrade=yes force_apt_get=yes
+  apt: upgrade=dist force_apt_get=yes
   become: true
   become_method: sudo
-  
-- name: "Installing Packages"
-  package:
-    name:
-      - jq
-      - pipx
-      - ntpdate
-      - flameshot
-      - exiftool
-    state: latest
+
+- name: "Remove unused dependancies"
+  apt: autoremove=true force_apt_get=yes
   become: true
   become_method: sudo

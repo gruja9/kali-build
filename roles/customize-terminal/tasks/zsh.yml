@@ -1,0 +1,31 @@
+---
+- name: "Installing Oh My Zsh"
+  block:
+    - name: "Downloading the installation script"
+      get_url:
+        url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+        dest: "{{ ansible_env.HOME }}/ohmyzsh.sh"
+
+    - name: "Running the installation script"
+      script:
+        cmd: "{{ ansible_env.HOME }}/ohmyzsh.sh"
+
+    - name: "Removing the installation script"
+      file:
+        path: "{{ ansible_env.HOME }}/ohmyzsh.sh"
+        state: absent
+
+- name: "Installing OMZ Plugins"
+  git:
+    repo: "{{ item.repo }}"
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/{{ item.dest }}"
+  loop:
+    - {repo: "https://github.com/zsh-users/zsh-autosuggestions", dest: "zsh-autosuggestions"}
+    - {repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git", dest: "zsh-syntax-highlighting"}
+    - {repo: "https://github.com/zsh-users/zsh-completions", dest: "zsh-completions"}
+    - {repo: "https://github.com/olivierverdier/zsh-git-prompt", dest: "zsh-git-prompt"}
+
+- name: "Copying over .zshrc"
+  copy:
+    src: "{{ role_path }}/files/.zshrc"
+    dest: "{{ ansible_env.HOME }}"

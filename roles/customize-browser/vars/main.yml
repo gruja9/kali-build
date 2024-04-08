@@ -11,6 +11,6 @@ burpsuite_extras_jars:
     checksum: sha256:da7f3d829b148bcfa86b059dc964e3a8556fedb021096c8db07e30c66faab9b4
     
 FirefoxPlugins:
-  - "darkreader"
+  - "noscript"
   - "foxyproxy-standard"
   - "wappalyzer"

@@ -1,0 +1,47 @@
+---
+- name: "Installing pipx tools"
+  community.general.pipx:
+    name: "{{ item.name }}"
+    source: "{{ item.url }}"
+    state: latest
+  loop:
+    - { name: 'adidnsdump', url: 'git+https://github.com/dirkjanm/adidnsdump'}
+    - { name: 'badsecrets', url: 'git+https://github.com/blacklanternsecurity/badsecrets' }
+    - { name: 'bloodhound', url: 'git+https://github.com/dirkjanm/BloodHound.py'}
+    - { name: 'bloodyad', url: 'git+https://github.com/CravateRouge/bloodyAD'}
+    - { name: 'bofhound', url: 'git+https://github.com/coffeegist/bofhound'}
+    - { name: 'certipy-ad', url: 'git+https://github.com/ly4k/Certipy'}
+    - { name: 'pypykatz', url: 'git+https://github.com/skelsec/pypykatz'}
+    - { name: 'cmloot', url: 'git+https://github.com/shelltrail/cmloot'}
+    - { name: 'coercer', url: 'git+https://github.com/p0dalirius/Coercer'}
+    - { name: 'donpapi', url: 'git+https://github.com/login-securite/DonPAPI'}
+    - { name: 'dploot', url: 'git+https://github.com/zblurx/dploot'}
+    - { name: 'gpoddity', url: 'git+https://github.com/synacktiv/GPOddity'}
+    - { name: 'hekatomb', url: 'git+https://github.com/ProcessusT/HEKATOMB'}
+    - { name: 'impacket', url: 'git+https://github.com/ThePorgs/impacket'}
+    - { name: 'itwasalladream', url: 'git+https://github.com/byt3bl33d3r/ItWasAllADream'}
+    - { name: 'ldeep', url: 'git+https://github.com/franc-pentest/ldeep'}
+    - { name: 'lsassy', url: 'git+https://github.com/Hackndo/lsassy'}
+    - { name: 'man-spider', url: 'git+https://github.com/blacklanternsecurity/MANSPIDER'}
+    - { name: 'mitm6', url: 'git+https://github.com/dirkjanm/mitm6'}
+    - { name: 'mssql-spider', url: 'git+https://github.com/dadevel/mssql-spider.git@main'}
+    - { name: 'netexec', url: 'git+https://github.com/Pennyw0rth/NetExec'}
+    - { name: 'pre2k', url: 'git+https://github.com/garrettfoster13/pre2k'}
+    - { name: 'pyinstaller', url: 'git+https://github.com/pyinstaller/pyinstaller'}
+    - { name: 'pyldapsearch', url: 'git+https://github.com/fortalice/pyldapsearch'}
+    - { name: 'pysnaffler', url: 'git+https://github.com/skelsec/pysnaffler'}
+    - { name: 'pywerview', url: 'git+https://github.com/the-useless-one/pywerview'}
+    - { name: 'scrtdnsdump', url: 'git+https://github.com/scrt/scrtdnsdump'}
+    - { name: 'smbcrawler', url: 'git+https://github.com/SySS-Research/smbcrawler'}
+    - { name: 'webclientservicescanner', url: 'git+https://github.com/Hackndo/WebclientServiceScanner'}
+    - { name: 'arsenal-cli', url: 'git+https://github.com/Orange-Cyberdefense/arsenal'}
+    - { name: 'pwncat-cs', url: 'git+https://github.com/calebstewart/pwncat'}
+    - { name: 'arjun', url: 'git+https://github.com/s0md3v/Arjun'}
+    - { name: 'exegol', url: 'git+https://github.com/ThePorgs/Exegol'}
+
+- name: "Installing pip tools"
+  pip:
+    name: "{{ item.name }}"
+  loop:
+    - {name: 'uploadserver'}
+    - {name: 'pyftpdlib'}

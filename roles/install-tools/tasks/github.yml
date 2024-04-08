@@ -1,0 +1,26 @@
+---
+- name: Create temporary build directory
+  ansible.builtin.tempfile:
+    state: directory
+  register: build_dir
+
+- name: "Copying python script to download github releases"
+  copy:
+    src: "files/githubdownload.py"
+    dest: "{{ build_dir.path }}/githubdownload.py"
+    mode: 0755
+
+- name: "Downloading github releases"
+  shell: "{{ build_dir.path }}/githubdownload.py {{ item.repo }} {{ item.regex }} {{ item.location }} {% if item.filename is defined %}{{ item.filename }}{% endif %}"
+  loop:
+    - { repo: "carlospolop/PEASS-ng",  regex: "linpeas.sh", location: "{{ ansible_env.HOME }}/Downloads" }
+    - { repo: "carlospolop/PEASS-ng",  regex: "winPEASx64.exe", location: "{{ ansible_env.HOME }}/Downloads" }
+    - { repo: "obsidianmd/obsidian-releases",  regex: '{{ "Obsidian-\d\.\d\.\d+\.AppImage" | regex_escape() }}', location: "{{ ansible_env.HOME }}/Downloads", filename: "obsidian"}
+  async: 45
+  poll: 0
+
+- name: Remove temporary build directory
+  ansible.builtin.file:
+    path: "{{ build_dir.path }}"
+    state: absent
+  when: build_dir.path is defined

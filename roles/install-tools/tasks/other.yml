@@ -1,0 +1,16 @@
+---
+- name: "Pausing for 15 seconds"
+  pause:
+    seconds: 15
+    
+- name: "Copying Obsidian to PATH"
+  copy:
+    src: "{{ ansible_env.HOME }}/Downloads/obsidian"
+    dest: "/usr/local/bin/obsidian"
+    mode: 0755
+  become: true
+
+- name: "Removing old Obsidian"
+  file:
+    path: "{{ ansible_env.HOME }}/Downloads/obsidian"
+    state: absent

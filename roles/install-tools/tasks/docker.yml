@@ -1,0 +1,10 @@
+---
+- name: "Installing Docker Tools"
+  community.docker.docker_image_pull:
+    name: "{{ item.name }}"
+  loop:
+    - {name: 'leonjza/gowitness'}
+    - {name: 'snovvcrash/divideandscan'}
+    - {name: 'rustscan/rustscan'}
+    - {name: 'cablethief/sshaft'}
+  become: true

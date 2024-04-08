@@ -1,21 +1,13 @@
 ---
-- name: "Customizing Parrot"
+- name: "Customizing Kali"
   hosts: localhost
   connection: local
   roles:
-    - role: "roles/install-tools"
-    - role: "roles/configure-tmux"
+    - role: "roles/configure-system"
+    - role: "roles/install-system-tools"
     - role: "roles/customize-terminal"
     - role: "roles/customize-browser"
-    - role: "roles/configure-logging"
-    - role: "roles/configure-system"
-    - role: gantsign.visual-studio-code
+#    - role: "roles/configure-logging"
+    - role: "roles/install-tools"
       users:
         - username: "{{ ansible_user_id }}" 
-          visual_studio_code_extensions:
-            - streetsidesoftware.code-spell-checker
-            - ms-python.python
-            - DEVSENSE.phptools-vscode
-            - GitHub.copilot
-            - snyk-security.snyk-vulnerability-scanner
-

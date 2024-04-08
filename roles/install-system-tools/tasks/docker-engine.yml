@@ -1,0 +1,43 @@
+---
+- name: "Preparing Docker Installation"
+  block:
+    - name: "Creating /etc/apt/keyrings"
+      file:
+        path: /etc/apt/keyrings
+        state: directory
+      become: true
+
+    - name: "Downloading key"
+      get_url:
+        url: https://download.docker.com/linux/debian/gpg
+        dest: /etc/apt/keyrings/docker.asc
+      become: true
+
+    - name: "Adding repository"
+      apt_repository:
+        repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian bookworm stable"
+        filename: docker
+      become: true
+
+    - name: "Updating apt cache"
+      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+      become: true
+      become_method: sudo
+
+- name: "Installing Docker Engine"
+  package: 
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: latest
+  become: true
+
+- name: "Adding the current user to the docker group"
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: docker
+    append: true
+  become: true

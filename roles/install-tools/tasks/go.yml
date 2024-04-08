@@ -1,0 +1,9 @@
+---
+- name: "Installing Go Tools"
+  shell: "go install {{ item.name }}"
+  loop:
+    - {name: 'github.com/ropnop/kerbrute@master'}
+    - {name: 'github.com/projectdiscovery/cvemap/cmd/cvemap@latest'}
+    - {name: 'github.com/lkarlslund/ldapnomnom@latest'}
+    - {name: 'github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest'}
+

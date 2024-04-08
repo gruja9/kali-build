@@ -1,0 +1,4 @@
+---
+- name: Set the correct timezone
+  become: true
+  shell: timedatectl set-timezone Europe/Stockholm
