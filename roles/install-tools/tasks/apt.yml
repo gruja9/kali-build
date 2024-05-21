@@ -6,6 +6,8 @@
       - feroxbuster
       - remmina
       - crowbar
+      - sshuttle
+      - joomscan
     state: latest
   become: true
   become_method: sudo

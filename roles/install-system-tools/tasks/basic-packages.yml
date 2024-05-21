@@ -13,6 +13,7 @@
       - libkrb5-dev
       - krb5-config
       - libpoppler-cpp-dev
+      - mingw-w64
     state: latest
   become: true
   become_method: sudo

@@ -38,6 +38,9 @@
     - { name: 'pwncat-cs', url: 'git+https://github.com/calebstewart/pwncat'}
     - { name: 'arjun', url: 'git+https://github.com/s0md3v/Arjun'}
     - { name: 'exegol', url: 'git+https://github.com/ThePorgs/Exegol'}
+    - { name: 'hashcathelper', url: 'git+https://github.com/SySS-Research/hashcathelper'}
+    - { name: 'msldap', url: 'git+https://github.com/skelsec/msldap'}
+    - { name: 'droopescan', url: 'git+https://github.com/SamJoan/droopescan'}
 
 - name: "Installing pip tools"
   pip:

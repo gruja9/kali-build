@@ -7,4 +7,5 @@
     - {name: 'snovvcrash/divideandscan'}
     - {name: 'rustscan/rustscan'}
     - {name: 'cablethief/sshaft'}
+    - {name: 'portswigger/sig2n'}
   become: true
