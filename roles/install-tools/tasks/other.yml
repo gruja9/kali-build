@@ -17,23 +17,23 @@
         path: "{{ ansible_env.HOME }}/Downloads/obsidian"
         state: absent
 
-- name: "Configuring WPScan with API Key"
-  block:
-    - name: "Creating ~/.wpscan directory"
-      file:
-        path: "{{ ansible_env.HOME }}/.wpscan"
-        state: directory
+# - name: "Configuring WPScan with API Key"
+#   block:
+#     - name: "Creating ~/.wpscan directory"
+#       file:
+#         path: "{{ ansible_env.HOME }}/.wpscan"
+#         state: directory
 
-    - name: "Copying YAML file to ~/.wpscan/"
-      copy:
-        src: "{{ role_path }}/files/wpscan-scan.yml"
-        dest: "{{ ansible_env.HOME }}/.wpscan/scan.yml"
+#     - name: "Copying YAML file to ~/.wpscan/"
+#       copy:
+#         src: "{{ role_path }}/files/wpscan-scan.yml"
+#         dest: "{{ ansible_env.HOME }}/.wpscan/scan.yml"
 
-    - name: "Setting the API Key"
-      lineinfile:
-        path: "{{ ansible_env.HOME }}/.wpscan/scan.yml"
-        regexp: "WPSCAN_API_KEY"
-        line: "api_token: {{ wpscan_api_key }}"
+#     - name: "Setting the API Key"
+#       lineinfile:
+#         path: "{{ ansible_env.HOME }}/.wpscan/scan.yml"
+#         regexp: "WPSCAN_API_KEY"
+#         line: "api_token: {{ wpscan_api_key }}"
 
 - name: "Installing BloodHound"
   block:
