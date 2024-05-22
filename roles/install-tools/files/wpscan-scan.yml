@@ -1,0 +1,2 @@
+cli_options:
+  api_token: 'WPSCAN_API_KEY'

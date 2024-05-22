@@ -4,7 +4,8 @@
     path: "{{ item.name }}"
     state: "{{ item.type }}"
   loop:
-    - { name: "{{ ansible_env.HOME }}/Pentests", type: "directory"}
+    - { name: "{{ ansible_env.HOME }}/Pentest", type: "directory"}
+    - { name: "{{ ansible_env.HOME }}/Pentest/Logs", type: "directory"}
     - { name: "{{ ansible_env.HOME }}/vmware-shared", type: "directory"}
 
 - name: Copy over files

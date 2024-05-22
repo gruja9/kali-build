@@ -2,6 +2,7 @@
 - name: "Installing Packages"
   package:
     name:
+      - neo4j
       - gobuster
       - feroxbuster
       - remmina
