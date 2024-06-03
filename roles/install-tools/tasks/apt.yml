@@ -9,6 +9,7 @@
       - crowbar
       - sshuttle
       - joomscan
+      - rlwrap
     state: latest
   become: true
   become_method: sudo

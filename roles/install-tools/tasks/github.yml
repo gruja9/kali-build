@@ -26,6 +26,7 @@
     dest: "{{ item.dest }}"
   loop:
     - { repo: "https://github.com/Acceis/bqm", dest: "{{ ansible_env.HOME }}/Downloads/bqm"}
+    - { repo: "https://github.com/The-Z-Labs/linux-exploit-suggester", dest: "{{ ansible_env.HOME }}/Downloads/linux-exploit-suggester"}
 
 - name: Remove temporary build directory
   ansible.builtin.file:
