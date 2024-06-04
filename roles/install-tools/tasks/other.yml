@@ -35,7 +35,7 @@
 #         regexp: "WPSCAN_API_KEY"
 #         line: "api_token: {{ wpscan_api_key }}"
 
-- name: "Installing BloodHound"
+- name: "Installing old BloodHound"
   block:
     - name: "Configuring initial password for Neo4j"
       shell: "JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64 /usr/share/neo4j/bin/neo4j-admin set-initial-password neo4j"

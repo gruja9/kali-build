@@ -1,5 +1,5 @@
 ---
-- name: "Installing Docker Tools"
+- name: "Pulling Docker images"
   community.docker.docker_image_pull:
     name: "{{ item.name }}"
   loop:
@@ -9,3 +9,7 @@
     - {name: 'cablethief/sshaft'}
     - {name: 'portswigger/sig2n'}
   become: true
+
+- name: "Running Docker Compose"
+  community.docker.docker_compose_v2:
+    project_src: "{{ ansible_env.HOME }}/Downloads/BHCE"

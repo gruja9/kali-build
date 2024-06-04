@@ -41,6 +41,7 @@
     - { name: 'hashcathelper', url: 'git+https://github.com/SySS-Research/hashcathelper'}
     - { name: 'msldap', url: 'git+https://github.com/skelsec/msldap'}
     - { name: 'droopescan', url: 'git+https://github.com/SamJoan/droopescan'}
+    - { name: 'ad-miner', url: 'git+https://github.com/Mazars-Tech/AD_Miner.git'}
 
 - name: "Installing pip tools"
   pip:

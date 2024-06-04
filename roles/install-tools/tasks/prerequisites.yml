@@ -1,0 +1,12 @@
+---
+- name: "Downloading BloodHound CE"
+  block:
+    - name: "Creating the directory"
+      file:
+        path: "{{ ansible_env.HOME }}/Downloads/BHCE"
+        state: directory
+
+    - name: "Downloading the compose.yml file"
+      get_url:
+        url: https://ghst.ly/getbhce
+        dest: "{{ ansible_env.HOME }}/Downloads/BHCE/compose.yml"
