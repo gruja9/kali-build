@@ -5,6 +5,7 @@
     source: "{{ item.url }}"
     state: latest
   loop:
+    # AD
     - { name: 'adidnsdump', url: 'git+https://github.com/dirkjanm/adidnsdump'}
     - { name: 'badsecrets', url: 'git+https://github.com/blacklanternsecurity/badsecrets' }
     - { name: 'bloodhound', url: 'git+https://github.com/dirkjanm/BloodHound.py'}
@@ -18,7 +19,7 @@
     - { name: 'dploot', url: 'git+https://github.com/zblurx/dploot'}
     - { name: 'gpoddity', url: 'git+https://github.com/synacktiv/GPOddity'}
     - { name: 'hekatomb', url: 'git+https://github.com/ProcessusT/HEKATOMB'}
-    - { name: 'impacket', url: 'git+https://github.com/ThePorgs/impacket'}
+    - { name: 'impacket', url: 'git+https://github.com/ThePorgs/impacket@master-bak'}
     - { name: 'itwasalladream', url: 'git+https://github.com/byt3bl33d3r/ItWasAllADream'}
     - { name: 'ldeep', url: 'git+https://github.com/franc-pentest/ldeep'}
     - { name: 'lsassy', url: 'git+https://github.com/Hackndo/lsassy'}
@@ -27,21 +28,35 @@
     - { name: 'mssql-spider', url: 'git+https://github.com/dadevel/mssql-spider.git@main'}
     - { name: 'netexec', url: 'git+https://github.com/Pennyw0rth/NetExec'}
     - { name: 'pre2k', url: 'git+https://github.com/garrettfoster13/pre2k'}
-    - { name: 'pyinstaller', url: 'git+https://github.com/pyinstaller/pyinstaller'}
     - { name: 'pyldapsearch', url: 'git+https://github.com/fortalice/pyldapsearch'}
     - { name: 'pysnaffler', url: 'git+https://github.com/skelsec/pysnaffler'}
     - { name: 'pywerview', url: 'git+https://github.com/the-useless-one/pywerview'}
     - { name: 'scrtdnsdump', url: 'git+https://github.com/scrt/scrtdnsdump'}
     - { name: 'smbcrawler', url: 'git+https://github.com/SySS-Research/smbcrawler'}
     - { name: 'webclientservicescanner', url: 'git+https://github.com/Hackndo/WebclientServiceScanner'}
+    - { name: 'msldap', url: 'git+https://github.com/skelsec/msldap'}
+    - { name: 'ad-miner', url: 'git+https://github.com/Mazars-Tech/AD_Miner.git'}
+    - { name: 'krbjack', url: 'git+https://github.com/almandin/krbjack'}
+    # External
+    - { name: 'pymetasec', url: 'git+https://github.com/m8sec/pymeta'}
+    - { name: 'crosslinked', url: 'git+https://github.com/m8sec/CrossLinked'}
+    - { name: 'trevorproxy', url: 'git+https://github.com/blacklanternsecurity/trevorproxy'}
+    - { name: 'trevorspray', url: 'git+https://github.com/blacklanternsecurity/trevorspray'}
+    - { name: 'o365spray', url: 'git+https://github.com/0xZDH/o365spray'}
+    - { name: 'spraycharles', url: 'git+https://github.com/Tw1sm/spraycharles'}
+    - { name: 'thumbscr-ews', url: 'git+https://github.com/sensepost/thumbscr-ews'}
+    - { name: 'fireproxng', url: 'git+https://github.com/Sprocket-Security/fireproxng'}
+    # Web
+    - { name: 'arjun', url: 'git+https://github.com/s0md3v/Arjun'}
+    - { name: 'droopescan', url: 'git+https://github.com/SamJoan/droopescan'}
+    # Other
+    - { name: 'pyinstaller', url: 'git+https://github.com/pyinstaller/pyinstaller'}
     - { name: 'arsenal-cli', url: 'git+https://github.com/Orange-Cyberdefense/arsenal'}
     - { name: 'pwncat-cs', url: 'git+https://github.com/calebstewart/pwncat'}
-    - { name: 'arjun', url: 'git+https://github.com/s0md3v/Arjun'}
     - { name: 'exegol', url: 'git+https://github.com/ThePorgs/Exegol'}
     - { name: 'hashcathelper', url: 'git+https://github.com/SySS-Research/hashcathelper'}
-    - { name: 'msldap', url: 'git+https://github.com/skelsec/msldap'}
-    - { name: 'droopescan', url: 'git+https://github.com/SamJoan/droopescan'}
-    - { name: 'ad-miner', url: 'git+https://github.com/Mazars-Tech/AD_Miner.git'}
+    - { name: 'wesng', url: 'git+https://github.com/bitsadmin/wesng'}
+    - { name: 'pypassgen', url: 'git+https://github.com/puzzlepeaches/pypassgen'}
 
 - name: "Installing pip tools"
   pip:
@@ -49,3 +64,6 @@
   loop:
     - {name: 'uploadserver'}
     - {name: 'pyftpdlib'}
+
+- name: "Custom pipx commands"
+  shell: "pipx runpip crosslinked install 'requests[socks]'"

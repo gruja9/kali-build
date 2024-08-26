@@ -13,3 +13,4 @@
 - name: "Running Docker Compose"
   community.docker.docker_compose_v2:
     project_src: "{{ ansible_env.HOME }}/Downloads/BHCE"
+  become: true
