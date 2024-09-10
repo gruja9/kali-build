@@ -181,7 +181,11 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
-# Tools shortcuts
+# Tools integrations
+source ~/.local/share/impacket-zsh-integration/krbconf.zsh
+source ~/.local/share/impacket-zsh-integration/proxyconf.zsh
+
+# Tools aliases
 alias a="arsenal"
 alias rustscan="docker run -it --rm --name rustscan rustscan/rustscan:latest"
 alias das='docker run --rm -it --name das -v ~/.das:/root/.das -v `pwd`:/app -p 8050:8050 snovvcrash/divideandscan'

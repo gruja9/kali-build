@@ -12,6 +12,7 @@
   copy:
     src: "{{ role_path }}/files/{{ item.filename }}"
     dest: "{{ ansible_env.HOME }}"
+    mode: preserve
   loop:
     - {filename: "remove-history.sh"}
     - {filename: "tmux_start_logging.sh"}

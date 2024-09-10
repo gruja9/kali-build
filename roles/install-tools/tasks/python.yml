@@ -37,6 +37,7 @@
     - { name: 'msldap', url: 'git+https://github.com/skelsec/msldap'}
     - { name: 'ad-miner', url: 'git+https://github.com/Mazars-Tech/AD_Miner.git'}
     - { name: 'krbjack', url: 'git+https://github.com/almandin/krbjack'}
+    - { name: 'ASRepCatcher', url: 'git+https://github.com/Yaxxine7/ASRepCatcher'}
     # External
     - { name: 'pymetasec', url: 'git+https://github.com/m8sec/pymeta'}
     - { name: 'crosslinked', url: 'git+https://github.com/m8sec/CrossLinked'}
@@ -62,6 +63,7 @@
   pip:
     name: "{{ item.name }}"
   loop:
+    - {name: 'impacket'}
     - {name: 'uploadserver'}
     - {name: 'pyftpdlib'}
 

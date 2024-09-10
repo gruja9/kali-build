@@ -27,6 +27,7 @@
   loop:
     - { repo: "https://github.com/Acceis/bqm", dest: "{{ ansible_env.HOME }}/Downloads/bqm"}
     - { repo: "https://github.com/The-Z-Labs/linux-exploit-suggester", dest: "{{ ansible_env.HOME }}/Downloads/linux-exploit-suggester"}
+    - { repo: "https://github.com/dadevel/impacket-zsh-integration.git", dest: "{{ ansible_env.HOME }}/.local/share/impacket-zsh-integration"}
 
 - name: Remove temporary build directory
   ansible.builtin.file:

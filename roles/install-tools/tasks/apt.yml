@@ -10,6 +10,11 @@
       - sshuttle
       - joomscan
       - rlwrap
+      - krb5-user
+      - libreoffice
+      - python3-construct
+      - python3-ldb
+      - liblnk-utils
     state: latest
   become: true
   become_method: sudo
