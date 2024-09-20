@@ -4,6 +4,12 @@
   become: true
   become_method: sudo
 
+- name: Remove /usr/lib/firmware/intel/sof-ace-tplg # Probably a temporary issue
+  file:
+    path: /usr/lib/firmware/intel/sof-ace-tplg
+    state: absent
+  become: true
+
 - name: "Upgrade all packages"
   apt: upgrade=dist force_apt_get=yes
   become: true

@@ -67,5 +67,8 @@
     - {name: 'uploadserver'}
     - {name: 'pyftpdlib'}
 
-- name: "Custom pipx commands"
-  shell: "pipx runpip crosslinked install 'requests[socks]'"
+- name: "Custom pipx commands" # Probably temporary issues
+  shell: "pipx runpip {{ item.command }}"
+  loop:
+    - {command: "crosslinked install 'requests[socks]'"}
+    - {command: "impacket install setuptools"}
