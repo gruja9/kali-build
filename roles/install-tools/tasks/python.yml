@@ -35,7 +35,7 @@
     - { name: 'smbcrawler', url: 'git+https://github.com/SySS-Research/smbcrawler'}
     - { name: 'webclientservicescanner', url: 'git+https://github.com/Hackndo/WebclientServiceScanner'}
     - { name: 'msldap', url: 'git+https://github.com/skelsec/msldap'}
-    - { name: 'ad-miner', url: 'git+https://github.com/Mazars-Tech/AD_Miner.git'}
+#    - { name: 'ad-miner', url: 'git+https://github.com/Mazars-Tech/AD_Miner.git'}
     - { name: 'krbjack', url: 'git+https://github.com/almandin/krbjack'}
     - { name: 'ASRepCatcher', url: 'git+https://github.com/Yaxxine7/ASRepCatcher'}
     # External
@@ -62,8 +62,8 @@
 - name: "Installing pip tools"
   pip:
     name: "{{ item.name }}"
+    break_system_packages: true
   loop:
-    - {name: 'impacket'}
     - {name: 'uploadserver'}
     - {name: 'pyftpdlib'}
 
