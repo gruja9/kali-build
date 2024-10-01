@@ -2,38 +2,6 @@
 - name: "Pausing for 15 seconds"
   pause:
     seconds: 15
-    
-- name: "Installing Obsidian"
-  block:
-    - name: "Copying Obsidian to PATH"
-      copy:
-        src: "{{ ansible_env.HOME }}/Downloads/obsidian"
-        dest: "/usr/local/bin/obsidian"
-        mode: 0755
-      become: true
-
-    - name: "Removing old Obsidian"
-      file:
-        path: "{{ ansible_env.HOME }}/Downloads/obsidian"
-        state: absent
-
-# - name: "Configuring WPScan with API Key"
-#   block:
-#     - name: "Creating ~/.wpscan directory"
-#       file:
-#         path: "{{ ansible_env.HOME }}/.wpscan"
-#         state: directory
-
-#     - name: "Copying YAML file to ~/.wpscan/"
-#       copy:
-#         src: "{{ role_path }}/files/wpscan-scan.yml"
-#         dest: "{{ ansible_env.HOME }}/.wpscan/scan.yml"
-
-#     - name: "Setting the API Key"
-#       lineinfile:
-#         path: "{{ ansible_env.HOME }}/.wpscan/scan.yml"
-#         regexp: "WPSCAN_API_KEY"
-#         line: "api_token: {{ wpscan_api_key }}"
 
 - name: "Installing old BloodHound"
   block:
@@ -59,3 +27,13 @@
         responses:
           "Do you want to overwrite it?": "1"
           "What to do with the existing queries?": "d"
+
+- name: "Installing third-party tools"
+  block:
+    - name: "Installing RustScan"
+      apt:
+        deb: "{{ ansible_env.HOME }}/Downloads/rustscan.deb"
+      become: true
+
+    - name: "Installing tun2socks"
+      shell: "PATH=$PATH:/usr/local/go/bin make -C {{ ansible_env.HOME }}/Downloads/tun2socks tun2socks && ln -s {{ ansible_env.HOME }}/Downloads/tun2socks/build/tun2socks {{ ansible_env.HOME }}/.local/bin/tun2socks"

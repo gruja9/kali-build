@@ -15,6 +15,8 @@
       - python3-construct
       - python3-ldb
       - liblnk-utils
+      - ntpdate
+      - jq
     state: latest
   become: true
   become_method: sudo

@@ -167,7 +167,7 @@ xterm*|rxvt*)
 esac
 
 # PATH
-export PATH="/home/kali/.local/bin:/home/kali/go/bin:$PATH"
+export PATH="/home/kali/.local/bin:/home/kali/go/bin:/usr/local/go/bin:$PATH"
 
 # General aliases
 alias rm="rm -f"
@@ -187,10 +187,10 @@ source ~/.local/share/impacket-zsh-integration/proxyconf.zsh
 
 # Tools aliases
 alias a="arsenal"
-alias rustscan="docker run -it --rm --name rustscan rustscan/rustscan:latest"
-alias das='docker run --rm -it --name das -v ~/.das:/root/.das -v `pwd`:/app -p 8050:8050 snovvcrash/divideandscan'
+#alias rustscan="docker run -it --rm --name rustscan rustscan/rustscan:latest"
+#alias das='docker run --rm -it --name das -v ~/.das:/root/.das -v `pwd`:/app -p 8050:8050 snovvcrash/divideandscan'
 alias eyewitness='docker run --rm -it -v `pwd`:/tmp/EyeWitness eyewitness'
-alias gowitness='docker run --rm -v `pwd`:/data -p7171:7171 leonjza/gowitness gowitness'
+#alias gowitness='docker run --rm -v `pwd`:/data -p7171:7171 leonjza/gowitness gowitness'
 alias sshaft='docker run --rm -it -e "USERNAME=testing" -e "PASSWORD=testing" -p 22:22 -p 4444:4444 cablethief/sshaft:latest'
 
 # Other aliases

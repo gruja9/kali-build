@@ -15,8 +15,9 @@
   loop:
     - { repo: "carlospolop/PEASS-ng",  regex: "linpeas.sh", location: "{{ ansible_env.HOME }}/Downloads" }
     - { repo: "carlospolop/PEASS-ng",  regex: "winPEASx64.exe", location: "{{ ansible_env.HOME }}/Downloads" }
-    - { repo: "obsidianmd/obsidian-releases",  regex: '{{ "Obsidian-\d\.\d\.\d+\.AppImage" | regex_escape() }}', location: "{{ ansible_env.HOME }}/Downloads", filename: "obsidian"}
+   # - { repo: "obsidianmd/obsidian-releases",  regex: '{{ "Obsidian-\d\.\d\.\d+\.AppImage" | regex_escape() }}', location: "{{ ansible_env.HOME }}/Downloads", filename: "obsidian"} # Not needed
     - { repo: "ly4k/BloodHound", regex: "BloodHound-linux-x64.zip", location: "{{ ansible_env.HOME }}/Downloads"}
+    - { repo: "RustScan/RustScan", regex: "amd64.deb", location: "{{ ansible_env.HOME }}/Downloads", filename: "rustscan.deb"}
   async: 45
   poll: 0
 
@@ -28,6 +29,7 @@
     - { repo: "https://github.com/Acceis/bqm", dest: "{{ ansible_env.HOME }}/Downloads/bqm"}
     - { repo: "https://github.com/The-Z-Labs/linux-exploit-suggester", dest: "{{ ansible_env.HOME }}/Downloads/linux-exploit-suggester"}
     - { repo: "https://github.com/dadevel/impacket-zsh-integration.git", dest: "{{ ansible_env.HOME }}/.local/share/impacket-zsh-integration"}
+    - { repo: "https://github.com/xjasonlyu/tun2socks.git", dest: "{{ ansible_env.HOME }}/Downloads/tun2socks"}
 
 - name: Remove temporary build directory
   ansible.builtin.file:

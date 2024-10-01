@@ -1,12 +1,22 @@
 ---
+- name: "Installing Golang"
+  block:
+    - name: "Downloading latest Golang version"
+      shell: gopath=$(curl -s https://go.dev/dl/ | grep download | grep linux | head -1 | cut -d " " -f4 | cut -d "\"" -f2); wget -q https://go.dev/$gopath -O /tmp/go.tar.gz
+
+    - name: "Extracting Go"
+      shell: tar -C /usr/local -xzf /tmp/go.tar.gz
+      become: true
+
 - name: "Installing Go Tools"
-  shell: "go install {{ item.name }}"
+  shell: "PATH=$PATH:/usr/local/go/bin go install {{ item.name }}"
   loop:
+    # AD 
     - {name: 'github.com/ropnop/kerbrute@master'}
-    - {name: 'github.com/projectdiscovery/cvemap/cmd/cvemap@latest'}
     - {name: 'github.com/lkarlslund/ldapnomnom@latest'}
-    - {name: 'github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest'}
     - {name: 'github.com/jfjallid/go-secdump@latest'}
-    #- {name: 'github.com/xjasonlyu/tun2socks/v2@latest'}
-
-
+    # Other
+    - {name: 'github.com/projectdiscovery/cvemap/cmd/cvemap@latest'}
+    - {name: 'github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest'}
+    - {name: 'github.com/tomnomnom/gron@latest'}
+    #- {name: 'github.com/xjasonlyu/tun2socks/v2@latest'} # Broken

@@ -7,9 +7,7 @@
       - python3-pip
       - pipx
       - apt-transport-https
-      - ntpdate
-      - jq
-      - golang
+      #- golang
       - libkrb5-dev
       - krb5-config
       - libpoppler-cpp-dev

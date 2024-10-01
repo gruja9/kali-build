@@ -35,7 +35,7 @@
     - { name: 'smbcrawler', url: 'git+https://github.com/SySS-Research/smbcrawler'}
     - { name: 'webclientservicescanner', url: 'git+https://github.com/Hackndo/WebclientServiceScanner'}
     - { name: 'msldap', url: 'git+https://github.com/skelsec/msldap'}
-#    - { name: 'ad-miner', url: 'git+https://github.com/Mazars-Tech/AD_Miner.git'}
+#    - { name: 'ad-miner', url: 'git+https://github.com/Mazars-Tech/AD_Miner.git'} # Broken
     - { name: 'krbjack', url: 'git+https://github.com/almandin/krbjack'}
     - { name: 'ASRepCatcher', url: 'git+https://github.com/Yaxxine7/ASRepCatcher'}
     # External
@@ -51,6 +51,7 @@
     - { name: 'arjun', url: 'git+https://github.com/s0md3v/Arjun'}
     - { name: 'droopescan', url: 'git+https://github.com/SamJoan/droopescan'}
     # Other
+   # - { name: 'divideandscan', url: 'git+https://github.com/snovvcrash/DivideAndScan.git'} # Installed with Docker
     - { name: 'pyinstaller', url: 'git+https://github.com/pyinstaller/pyinstaller'}
     - { name: 'arsenal-cli', url: 'git+https://github.com/Orange-Cyberdefense/arsenal'}
     - { name: 'pwncat-cs', url: 'git+https://github.com/calebstewart/pwncat'}
@@ -71,4 +72,4 @@
   shell: "pipx runpip {{ item.command }}"
   loop:
     - {command: "crosslinked install 'requests[socks]'"}
-    - {command: "impacket install setuptools"}
+    - {command: "impacket install setuptools pycryptodome"}
