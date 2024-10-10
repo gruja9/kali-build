@@ -1,0 +1,6 @@
+---
+- name: "Post-install configurations"
+  block:
+    - name: "Updating Nmap's ScriptDB"
+      shell: "nmap --script-updatedb"
+      become: true

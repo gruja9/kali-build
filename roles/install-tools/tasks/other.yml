@@ -37,3 +37,6 @@
 
     - name: "Installing tun2socks"
       shell: "PATH=$PATH:/usr/local/go/bin make -C {{ ansible_env.HOME }}/Downloads/tun2socks tun2socks && ln -s {{ ansible_env.HOME }}/Downloads/tun2socks/build/tun2socks {{ ansible_env.HOME }}/.local/bin/tun2socks"
+
+    - name: "Installing TailScale client"
+      shell: "curl -fsSL https://tailscale.com/install.sh | sh"

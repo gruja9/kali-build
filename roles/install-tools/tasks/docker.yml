@@ -8,6 +8,7 @@
     - {name: 'rustscan/rustscan'}
     - {name: 'cablethief/sshaft'}
     - {name: 'portswigger/sig2n'}
+    - {name: 'bettercap/bettercap'}
   become: true
 
 - name: "Running Docker Compose"

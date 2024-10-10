@@ -26,20 +26,7 @@
   become_method: sudo
 
 - name: "Installing Pyenv"
-  block:
-    - name: "Downloading the installation script"
-      get_url:
-        url: https://pyenv.run
-        dest: "{{ ansible_env.HOME }}/pyenv.sh"
-
-    - name: "Running the installation script"
-      script:
-        cmd: "{{ ansible_env.HOME }}/pyenv.sh"
-
-    - name: "Removing the installation script"
-      file:
-        path: "{{ ansible_env.HOME }}/pyenv.sh"
-        state: absent
+  shell: "curl -fsSL https://pyenv.run | sh"
 
 - name: "Installing desired Python versions"
   shell: "{{ ansible_env.HOME }}/.pyenv/bin/pyenv install {{ item.version }}"

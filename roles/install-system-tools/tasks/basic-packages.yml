@@ -12,6 +12,10 @@
       - krb5-config
       - libpoppler-cpp-dev
       - mingw-w64
+      - build-essential
+      - libpcap-dev
+      - libusb-1.0-0-dev
+      - libnetfilter-queue-dev
     state: latest
   become: true
   become_method: sudo
