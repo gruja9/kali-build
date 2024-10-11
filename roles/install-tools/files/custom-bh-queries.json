@@ -1,0 +1,15 @@
+{
+    "queries": [
+      {
+        "name": "Find Misconfigured Certificate Templates (ESC15)",
+        "category": "Domain Escalation",
+        "queryList": [
+      {
+          "final": true,
+          "query": "MATCH p=(:Base)-[:MemberOf*0..]->()-[:Enroll|AllExtendedRights]->(ct:CertTemplate)-[:PublishedTo]->(:EnterpriseCA)-[:TrustedForNTAuth]->(:NTAuthStore)-[:NTAuthStoreFor]->(:Domain) WHERE ct.enrolleesuppliessubject = True AND ct.authenticationenabled = False AND ct.requiresmanagerapproval = False AND ct.schemaversion = 1 RETURN p"
+      }
+        ]
+      }
+    ]
+  }  
+  

@@ -21,11 +21,16 @@
         path: "{{ ansible_env.HOME }}/.config/bloodhound"
         state: directory
 
+    - name: "Copying custom BloodHound queries from Ansible"
+      copy:
+        src: "files/custom-bh-queries.json"
+        dest: "{{ ansible_env.HOME }}/.config/bloodhound/custom-bh-queries.json"
+
     - name: "Downloading custom queries"
       expect:
-        command: "/usr/bin/ruby {{ ansible_env.HOME }}/Downloads/bqm/bin/bqm -o {{ ansible_env.HOME }}/.config/bloodhound/customqueries.json"
+        command: "/usr/bin/ruby {{ ansible_env.HOME }}/Downloads/bqm/bin/bqm -o {{ ansible_env.HOME }}/.config/bloodhound/customqueries.json -i {{ ansible_env.HOME }}/.config/bloodhound/custom-bh-queries.json"
         responses:
-          "Do you want to overwrite it?": "1"
+          "Do you want to overwrite it?": "y"
           "What to do with the existing queries?": "d"
 
 - name: "Installing third-party tools"
