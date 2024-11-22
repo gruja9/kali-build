@@ -10,11 +10,11 @@
       become: true
       become_method: sudo
 
-    - name: "Making the BloodHound binary executable"
-      file:
-        path: "{{ ansible_env.HOME }}/Downloads/BloodHound-linux-x64/BloodHound"
-        state: file
-        mode: u+x
+#    - name: "Making the BloodHound binary executable"
+#      file:
+#        path: "{{ ansible_env.HOME }}/Downloads/BloodHound-linux-x64/BloodHound"
+#        state: file
+#        mode: u+x
 
     - name: "Creating BloodHound config directory"
       file:
