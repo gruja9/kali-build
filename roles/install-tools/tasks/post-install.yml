@@ -4,3 +4,10 @@
     - name: "Updating Nmap's ScriptDB"
       shell: "nmap --script-updatedb"
       become: true
+
+    - name: "Modifying /etc/proxychains4.conf"
+      lineinfile:
+        path: /etc/proxychains4.conf
+        search_string: "socks4 	127.0.0.1 9050"
+        line: "socks5 127.0.0.1 1080"
+      become: true

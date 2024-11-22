@@ -1,0 +1,16 @@
+---
+- name: "PowerShell: Set repositories as trusted"
+  shell: 'pwsh -Command "Set-PSRepository -Name {{ item.name }} -InstallationPolicy Trusted"'
+  loop:
+    - {name: "PSGallery"}
+
+- name: "PowerShell: Installing modules"
+  shell: 'pwsh -Command "Install-Module {{ item.name }} {{ item.extra_args }}"'
+  loop:
+    - {name: "AADInternals", extra_args: ""}
+    - {name: "Microsoft.Graph", extra_args: "-AllowClobber"}
+    - {name: "Microsoft.Graph.Beta.Identity.DirectoryManagement", extra_args: ""}
+    - {name: "Az", extra_args: ""}
+    - {name: "AzureAD", extra_args: ""}
+    - {name: "AzureADPreview", extra_args: ""}
+    - {name: "MSOnline", extra_args: ""}

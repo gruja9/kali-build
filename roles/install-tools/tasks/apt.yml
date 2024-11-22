@@ -17,6 +17,8 @@
       - liblnk-utils
       - ntpdate
       - jq
+      - azure-cli
+      - trufflehog
     state: latest
   become: true
   become_method: sudo

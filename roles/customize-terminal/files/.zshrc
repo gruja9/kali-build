@@ -146,7 +146,7 @@ if [ "$color_prompt" = yes ]; then
     debian_chroot=$(cat /etc/debian_chroot)
     fi
 
-    interface="tun0"
+    interface="eth0"
     ip=$(ip addr show $interface | grep inet -w | cut -d " " -f6 | cut -d "/" -f1)
 
     source ~/.oh-my-zsh/custom/plugins/zsh-git-prompt/zshrc.sh
@@ -200,9 +200,9 @@ source ~/.local/share/impacket-zsh-integration/proxyconf.zsh
 # Tools aliases
 alias a="arsenal"
 #alias rustscan="docker run -it --rm --name rustscan rustscan/rustscan:latest"
-#alias das='docker run --rm -it --name das -v ~/.das:/root/.das -v `pwd`:/app -p 8050:8050 snovvcrash/divideandscan'
+alias das='docker run --rm -it --name das -v ~/.das:/root/.das -v `pwd`:/app -p 8050:8050 snovvcrash/divideandscan'
 alias eyewitness='docker run --rm -it -v `pwd`:/tmp/EyeWitness eyewitness'
-#alias gowitness='docker run --rm -v `pwd`:/data -p7171:7171 leonjza/gowitness gowitness'
+alias gowitness='docker run --rm -v `pwd`:/data -p7171:7171 leonjza/gowitness gowitness'
 alias sshaft='docker run --rm -it -e "USERNAME=testing" -e "PASSWORD=testing" -p 22:22 -p 4444:4444 cablethief/sshaft:latest'
 
 # Other aliases

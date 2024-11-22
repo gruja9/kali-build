@@ -1,11 +1,12 @@
 ---
-- name: "Installing pipx tools"
+- name: "Pipx: Installing from a Git repository"
   community.general.pipx:
     name: "{{ item.name }}"
     source: "git+{{ item.url }}"
     state: latest
   loop:
     # AD
+    - { name: 'ADcheck', url: 'https://github.com/CobblePot59/ADcheck'}
     - { name: 'adidnsdump', url: 'https://github.com/dirkjanm/adidnsdump'}
     - { name: 'badsecrets', url: 'https://github.com/blacklanternsecurity/badsecrets' }
     - { name: 'bloodhound', url: 'https://github.com/dirkjanm/BloodHound.py'}
@@ -35,7 +36,6 @@
     - { name: 'smbcrawler', url: 'https://github.com/SySS-Research/smbcrawler'}
     - { name: 'webclientservicescanner', url: 'https://github.com/Hackndo/WebclientServiceScanner'}
     - { name: 'msldap', url: 'https://github.com/skelsec/msldap'}
-#    - { name: 'ad-miner', url: 'https://github.com/Mazars-Tech/AD_Miner.git'} # Broken
     - { name: 'krbjack', url: 'https://github.com/almandin/krbjack'}
     - { name: 'ASRepCatcher', url: 'https://github.com/Yaxxine7/ASRepCatcher'}
     # External
@@ -43,11 +43,13 @@
     - { name: 'crosslinked', url: 'https://github.com/m8sec/CrossLinked'}
     - { name: 'trevorproxy', url: 'https://github.com/blacklanternsecurity/trevorproxy'}
     - { name: 'trevorspray', url: 'https://github.com/blacklanternsecurity/trevorspray'}
-    - { name: 'o365spray', url: 'https://github.com/0xZDH/o365spray'}
     - { name: 'spraycharles', url: 'https://github.com/Tw1sm/spraycharles'}
     - { name: 'thumbscr-ews', url: 'https://github.com/sensepost/thumbscr-ews'}
     - { name: 'fireproxng', url: 'https://github.com/Sprocket-Security/fireproxng'}
+    # Azure
+    - { name: 'o365spray', url: 'https://github.com/0xZDH/o365spray'}
     - { name: 'aadoutsider', url: 'https://github.com/synacktiv/AADOutsider-py'}
+    - { name: 'graphspy', url: 'https://github.com/RedByte1337/GraphSpy'}
     # Web
     - { name: 'arjun', url: 'https://github.com/s0md3v/Arjun'}
     - { name: 'droopescan', url: 'https://github.com/SamJoan/droopescan'}
@@ -60,6 +62,17 @@
     - { name: 'hashcathelper', url: 'https://github.com/SySS-Research/hashcathelper'}
     - { name: 'wesng', url: 'https://github.com/bitsadmin/wesng'}
     - { name: 'pypassgen', url: 'https://github.com/puzzlepeaches/pypassgen'}
+    - { name: 'bridgekeeper', url: 'https://github.com/0xZDH/BridgeKeeper'}
+    - { name: 'adiskreader-secretsdump', url: 'https://github.com/skelsec/adiskreader-secretsdump'}
+
+- name: "Pipx: Installing from PyPI"
+  community.general.pipx:
+    name: "{{ item.name }}"
+    state: latest
+  loop:
+    # AD
+    - { name: 'roadrecon'}
+    - { name: 'roadtx'}
 
 - name: "Installing pip tools"
   pip:

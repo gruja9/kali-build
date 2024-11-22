@@ -16,6 +16,7 @@
       - libpcap-dev
       - libusb-1.0-0-dev
       - libnetfilter-queue-dev
+      - powershell
     state: latest
   become: true
   become_method: sudo

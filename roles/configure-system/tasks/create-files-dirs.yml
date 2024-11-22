@@ -6,6 +6,14 @@
   loop:
     - { name: "{{ ansible_env.HOME }}/Pentest", type: "directory"}
     - { name: "{{ ansible_env.HOME }}/Pentest/Logs", type: "directory"}
+    - { name: "{{ ansible_env.HOME }}/Pentest/Scope", type: "directory"}
+    - { name: "{{ ansible_env.HOME }}/Pentest/Report", type: "directory"}
+    - { name: "{{ ansible_env.HOME }}/Pentest/Scans", type: "directory"}
+    - { name: "{{ ansible_env.HOME }}/Pentest/Scans/Nxc", type: "directory"}
+    - { name: "{{ ansible_env.HOME }}/Pentest/Scans/Nmap", type: "directory"}
+    - { name: "{{ ansible_env.HOME }}/Pentest/Loot", type: "directory"}
+    - { name: "{{ ansible_env.HOME }}/Pentest/Loot/DCSync", type: "directory"}
+    - { name: "{{ ansible_env.HOME }}/Pentest/Loot/Creds", type: "directory"}
     - { name: "{{ ansible_env.HOME }}/vmware-shared", type: "directory"}
 
 - name: Copy over files
