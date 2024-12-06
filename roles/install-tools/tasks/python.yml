@@ -73,6 +73,7 @@
     # AD
     - { name: 'roadrecon'}
     - { name: 'roadtx'}
+    - { name: 'seamlesspass'}
 
 - name: "Installing pip tools"
   pip:
@@ -87,3 +88,5 @@
   loop:
     - {command: "crosslinked install 'requests[socks]'"}
     - {command: "impacket install setuptools pycryptodome"}
+    - {command: 'roadrecon install neo4j-driver'}
+    - {command: 'roadtx install setuptools'}

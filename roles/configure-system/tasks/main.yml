@@ -4,3 +4,5 @@
 - include_tasks: "update-system.yml"
 - include_tasks: "create-files-dirs.yml"
 - include_tasks: "allow-vmware-mount.yml"
+- include_tasks: "burp.yml"
+- include_tasks: "firefox.yml"

@@ -1,3 +1,4 @@
+---
 - name: "Updating Firefox Policies"
   template: 
     src: "templates/policies.json.j2"

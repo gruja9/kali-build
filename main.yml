@@ -6,7 +6,6 @@
     - role: "roles/configure-system"
     - role: "roles/install-system-tools"
     - role: "roles/customize-terminal"
-    - role: "roles/customize-browser"
 #    - role: "roles/configure-logging"
     - role: "roles/install-tools"
       users:

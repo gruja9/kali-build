@@ -1,0 +1,6 @@
+---
+- name: "Disable transparency"
+  replace:
+    path: "{{ ansible_env.HOME }}/.config/qterminal.org/qterminal.ini"
+    regexp: '(.*)Transparency=\d'
+    replace: '\1Transparency=0'

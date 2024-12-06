@@ -24,3 +24,4 @@
   loop:
     - {filename: "remove-history.sh"}
     - {filename: "tmux_start_logging.sh"}
+    - {filename: "ad-recon.sh"}

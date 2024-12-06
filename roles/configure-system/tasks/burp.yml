@@ -1,21 +1,15 @@
-- name: "Check if BurpSuiteCA.der exists"
-  stat:
-    path: /usr/local/share/ca-certificates/BurpSuiteCA.der
-  register: burp_cert
-  
+---
 - name: "Copying Burp Script"
   copy:
     src: files/getburpcert.sh
     dest: /tmp/getburpcert.sh
     mode: 0744
-  when: burp_cert.stat.exists == False
 
 - name: "Executing bash script to Download CA Certificate"
   shell:
     /tmp/getburpcert.sh
-  when: burp_cert.stat.exists == False
 
-- name: "Copying CA Certificate to /usr/local/share/ca-certificates"
+- name: "Copying CA DER Certificate to /usr/local/share/ca-certificates"
   copy:
     src: /tmp/cacert.der
     dest: /usr/local/share/ca-certificates/BurpSuiteCA.der
@@ -24,7 +18,27 @@
     mode: 0644
   become: true
   become_method: sudo
-  when: burp_cert.stat.exists == False
+
+- name: "Converting CA Certificate from DER to PEM"
+  shell: "openssl x509 -inform der -in /tmp/cacert.der -out /tmp/cacert.pem"
+
+- name: "Copying CA PEM Certificate to /usr/local/share/ca-certificates"
+  copy:
+    src: /tmp/cacert.pem
+    dest: /usr/local/share/ca-certificates/BurpSuiteCA.crt
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  become_method: sudo
+
+- name: "Appending CA PEM Certificate to /etc/ssl/certs/ca-certificates.crt"
+  shell: "cat /tmp/cacert.pem >> /etc/ssl/certs/ca-certificates.crt"
+  become: true
+
+- name: "Updating CA Certificates"
+  shell: "update-ca-certificates"
+  become: true
 
 - name: Create directory for Burp Suite extras
   ansible.builtin.file:

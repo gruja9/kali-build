@@ -19,6 +19,7 @@
       - jq
       - azure-cli
       - trufflehog
+      - sprayhound
     state: latest
   become: true
   become_method: sudo
