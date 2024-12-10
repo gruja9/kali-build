@@ -10,10 +10,11 @@ exit
 domain=$1
 
 # Configurations
-scopeFolder="/home/kali/Pentest/Scope"
-scansFolder="/home/kali/Pentest/Scans"
-nmapFolder="/home/kali/Pentest/Scans/Nmap"
-nxcFolder="/home/kali/Pentest/Scans/Nxc"
+pentestFolder="$HOME/Pentest"
+scopeFolder="$pentestFolder/Scope"
+scansFolder="$pentestFolder/Scans"
+nmapFolder="$pentestFolder/Scans/Nmap"
+nxcFolder="$pentestFolder/Scans/Nxc"
 webPorts="80,443,8080,8443,8081,8082,8083,8084,8085,8888"
 
 # Ping Scan

@@ -50,6 +50,7 @@
     - { name: 'o365spray', url: 'https://github.com/0xZDH/o365spray'}
     - { name: 'aadoutsider', url: 'https://github.com/synacktiv/AADOutsider-py'}
     - { name: 'graphspy', url: 'https://github.com/RedByte1337/GraphSpy'}
+    - { name: "Graphpython", url: 'https://github.com/mlcsec/Graphpython'}
     # Web
     - { name: 'arjun', url: 'https://github.com/s0md3v/Arjun'}
     - { name: 'droopescan', url: 'https://github.com/SamJoan/droopescan'}

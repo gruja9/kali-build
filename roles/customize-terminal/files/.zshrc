@@ -167,7 +167,7 @@ xterm*|rxvt*)
 esac
 
 # PATH
-export PATH="/home/kali/.local/bin:/home/kali/go/bin:/usr/local/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/go/bin:/usr/local/go/bin:$PATH"
 
 # General aliases
 alias rm="rm -f"
