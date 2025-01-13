@@ -6,7 +6,8 @@
 if [ $# -ne 1 ]
 then
 	echo "Usage: $0 <domain>"
-exit
+	exit
+fi
 domain=$1
 
 # Configurations
@@ -15,14 +16,15 @@ scopeFolder="$pentestFolder/Scope"
 scansFolder="$pentestFolder/Scans"
 nmapFolder="$pentestFolder/Scans/Nmap"
 nxcFolder="$pentestFolder/Scans/Nxc"
+reportFolder="$pentestFolder/Report"
 webPorts="80,443,8080,8443,8081,8082,8083,8084,8085,8888"
 
 # Ping Scan
-nmap -iL "$scopeFile/scope.txt" -sn -oN "$nmapFolder/ping.nmap" -n >/dev/null
+nmap -iL "$scopeFolder/scope.txt" -sn -oN "$nmapFolder/ping.nmap" -n >/dev/null
 cat "$nmapFolder/ping.nmap" | grep "scan report" | cut -d " " -f5 > "$scopeFolder/alive-ips.txt"
 
 # Web Port Scan
-nmap -iL "$scopeFolder/alive-ips.txt" -T3 -p $webPorts -oN "$nmapFolder/web.nmap" -oX "$nmapFolder/web.xml" -R --open
+nmap -iL "$scopeFolder/alive-ips.txt" -T3 -p $webPorts -oN "$nmapFolder/web.nmap" -oX "$nmapFolder/web.xml" -R --open >/dev/null
 
 # Nxc Scans
 
@@ -37,8 +39,10 @@ cat "$nxcFolder/smb-all-windows-$domain.nxc" | awk -F' ' '{ print $2 }' > "$scan
 
 cat "$nxcFolder/smb-all-windows-$domain-servers.nxc" | grep signing:False | awk -F' ' '{ print $2 }' > "$scansFolder/smbrelaying-servers.txt"
 cat "$nxcFolder/smb-all-windows-$domain.nxc" | grep signing:False | awk -F' ' '{ print $2 }' > "$scansFolder/smbrelaying.txt"
+cat "$nxcFolder/smb-all-windows-$domain.nxc" | grep signing:False | awk -F' ' '{ print $2,$4 }' > "$reportFolder/smbrelaying.csv"
 
 cat "$nxcFolder/smb-all-windows-$domain.nxc" | grep SMBv1:True | awk -F' ' '{print $2 }' > "$scansFolder/smbv1-ips.txt"
+cat "$nxcFolder/smb-all-windows-$domain.nxc" | grep SMBv1:True | awk -F' ' '{ print $2,$4 }' > "$reportFolder/smbv1.csv"
 
 ## FTP
 nxc ftp "$scopeFolder/alive-ips.txt" | grep FTP > "$nxcFolder/ftp.nxc"
@@ -54,4 +58,4 @@ cat "$nxcFolder/mssql.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/mssql-ips.
 
 ## RDP
 nxc rdp "$scopeFolder/alive-ips.txt" | grep RDP > "$nxcFolder/rdp.nxc"
-cat "$nxcFolder/rdp.nxc" | awk -F' ' '{ print $3 }' > "$scansFolder/rdp-ips.txt"
+cat "$nxcFolder/rdp.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/rdp-ips.txt"

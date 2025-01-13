@@ -5,6 +5,11 @@
       - tmux
       - zsh
       - python3-pip
+      - python3-venv
+      - python3-dev
+      - pkg-config
+      - libfuse3-dev
+      - openssl
       - pipx
       - apt-transport-https
       #- golang
@@ -17,6 +22,14 @@
       - libusb-1.0-0-dev
       - libnetfilter-queue-dev
       - powershell
+      - libegl1
+      - libxcb-cursor0
+      - libxkbcommon-x11-0
+      - libxcb-icccm4
+      - libxcb-keysyms1
+      - libnotify-bin
+      - libavcodec61
+      - libavdevice61
     state: latest
   become: true
   become_method: sudo

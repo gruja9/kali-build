@@ -5,7 +5,7 @@
       - neo4j
       - gobuster
       - feroxbuster
-      - remmina
+     # - remmina
       - crowbar
       - sshuttle
       - joomscan
@@ -20,6 +20,10 @@
       - azure-cli
       - trufflehog
       - sprayhound
+      - wimtools
+      - wmi-client
+      - xtightvncviewer
+      - braa
     state: latest
   become: true
   become_method: sudo

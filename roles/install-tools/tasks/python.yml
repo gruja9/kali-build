@@ -65,6 +65,7 @@
     - { name: 'pypassgen', url: 'https://github.com/puzzlepeaches/pypassgen'}
     - { name: 'bridgekeeper', url: 'https://github.com/0xZDH/BridgeKeeper'}
     - { name: 'adiskreader-secretsdump', url: 'https://github.com/skelsec/adiskreader-secretsdump'}
+    - { name: 'nfs_security_tooling', url: 'https://github.com/hvs-consulting/nfs-security-tooling'}
 
 - name: "Pipx: Installing from PyPI"
   community.general.pipx:
@@ -75,14 +76,15 @@
     - { name: 'roadrecon'}
     - { name: 'roadtx'}
     - { name: 'seamlesspass'}
+    - { name: 'pyrdp-mitm[full]'}
 
 - name: "Installing pip tools"
   pip:
     name: "{{ item.name }}"
     break_system_packages: true
   loop:
-    - {name: 'uploadserver'}
-    - {name: 'pyftpdlib'}
+    - { name: 'uploadserver'}
+    - { name: 'pyftpdlib'}
 
 - name: "Custom pipx commands" # Probably temporary issues
   shell: "pipx runpip {{ item.command }}"

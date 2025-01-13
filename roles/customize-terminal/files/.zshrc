@@ -193,6 +193,10 @@ autoload -U add-zsh-hook
 add-zsh-hook chpwd python_venv
 python_venv
 
+# Dotnet
+export DOTNET_ROOT=$HOME/Downloads/dotnet
+export PATH=$PATH:$DOTNET_ROOT
+
 # Tools integrations
 source ~/.local/share/impacket-zsh-integration/krbconf.zsh
 source ~/.local/share/impacket-zsh-integration/proxyconf.zsh
