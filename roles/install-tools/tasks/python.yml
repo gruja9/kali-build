@@ -20,7 +20,7 @@
     - { name: 'dploot', url: 'https://github.com/zblurx/dploot'}
     - { name: 'gpoddity', url: 'https://github.com/synacktiv/GPOddity'}
     - { name: 'hekatomb', url: 'https://github.com/ProcessusT/HEKATOMB'}
-    - { name: 'impacket', url: 'https://github.com/ThePorgs/impacket@master-bak'}
+    - { name: 'impacket', url: 'https://github.com/ThePorgs/impacket'}
     - { name: 'itwasalladream', url: 'https://github.com/byt3bl33d3r/ItWasAllADream'}
     - { name: 'ldeep', url: 'https://github.com/franc-pentest/ldeep'}
     - { name: 'lsassy', url: 'https://github.com/Hackndo/lsassy'}
@@ -38,6 +38,7 @@
     - { name: 'msldap', url: 'https://github.com/skelsec/msldap'}
     - { name: 'krbjack', url: 'https://github.com/almandin/krbjack'}
     - { name: 'ASRepCatcher', url: 'https://github.com/Yaxxine7/ASRepCatcher'}
+    - { name: 'sccmhunter', url: 'https://github.com/garrettfoster13/sccmhunter'}
     # External
     - { name: 'pymetasec', url: 'https://github.com/m8sec/pymeta'}
     - { name: 'crosslinked', url: 'https://github.com/m8sec/CrossLinked'}
@@ -77,6 +78,7 @@
     - { name: 'roadtx'}
     - { name: 'seamlesspass'}
     - { name: 'pyrdp-mitm[full]'}
+    #- { name: 'volatility3'}
 
 - name: "Installing pip tools"
   pip:
@@ -93,3 +95,5 @@
     - {command: "impacket install setuptools pycryptodome"}
     - {command: 'roadrecon install neo4j-driver'}
     - {command: 'roadtx install setuptools'}
+    - {command: 'pyldapsearch install setuptools'}
+    #- {command: 'volatility3 install yara-python yara-x pycryptodome'}
