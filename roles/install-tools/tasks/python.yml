@@ -77,7 +77,7 @@
     - { name: 'roadrecon'}
     - { name: 'roadtx'}
     - { name: 'seamlesspass'}
-    - { name: 'pyrdp-mitm[full]'}
+    #- { name: 'pyrdp-mitm[full]'}
     #- { name: 'volatility3'}
 
 - name: "Installing pip tools"
