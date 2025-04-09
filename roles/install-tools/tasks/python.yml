@@ -1,4 +1,17 @@
 ---
+- name: "Installing Python dependencies"
+  package:
+    name:
+      - python3-construct
+      - python3-ldb
+      - python3-argcomplete
+      - python3-poetry
+      - python3-ldap
+      - libldap2-dev
+      - libsasl2-dev
+    state: latest
+  become: true
+
 - name: "Pipx: Installing from a Git repository"
   community.general.pipx:
     name: "{{ item.name }}"
@@ -39,14 +52,17 @@
     - { name: 'krbjack', url: 'https://github.com/almandin/krbjack'}
     - { name: 'ASRepCatcher', url: 'https://github.com/Yaxxine7/ASRepCatcher'}
     - { name: 'sccmhunter', url: 'https://github.com/garrettfoster13/sccmhunter'}
+    - { name: 'ntdissector', url: 'https://github.com/synacktiv/ntdissector'}
+    - { name: 'soapy', url: 'https://github.com/xforcered/SoaPy'}
+    - { name: 'powerview', url: 'https://github.com/aniqfakhrul/powerview.py'}
     # External
     - { name: 'pymetasec', url: 'https://github.com/m8sec/pymeta'}
-    - { name: 'crosslinked', url: 'https://github.com/m8sec/CrossLinked'}
+    #- { name: 'crosslinked', url: 'https://github.com/m8sec/CrossLinked'} # Temporary issue with lxml 4.9.4
     - { name: 'trevorproxy', url: 'https://github.com/blacklanternsecurity/trevorproxy'}
     - { name: 'trevorspray', url: 'https://github.com/blacklanternsecurity/trevorspray'}
     - { name: 'spraycharles', url: 'https://github.com/Tw1sm/spraycharles'}
     - { name: 'thumbscr-ews', url: 'https://github.com/sensepost/thumbscr-ews'}
-    - { name: 'fireproxng', url: 'https://github.com/Sprocket-Security/fireproxng'}
+    #- { name: 'fireproxng', url: 'https://github.com/Sprocket-Security/fireproxng'} # # Temporary issue with lxml 4.9.4
     # Azure
     - { name: 'o365spray', url: 'https://github.com/0xZDH/o365spray'}
     - { name: 'aadoutsider', url: 'https://github.com/synacktiv/AADOutsider-py'}
@@ -79,6 +95,11 @@
     - { name: 'seamlesspass'}
     #- { name: 'pyrdp-mitm[full]'}
     #- { name: 'volatility3'}
+    - { name: 'poetry'}
+    - { name: 'smbclientng'}
+    - { name: 'conpass'}
+    # Web
+    - { name: 'webcap'}
 
 - name: "Installing pip tools"
   pip:
@@ -91,7 +112,7 @@
 - name: "Custom pipx commands" # Probably temporary issues
   shell: "pipx runpip {{ item.command }}"
   loop:
-    - {command: "crosslinked install 'requests[socks]'"}
+    #- {command: "crosslinked install 'requests[socks]'"}
     - {command: "impacket install setuptools pycryptodome"}
     - {command: 'roadrecon install neo4j-driver'}
     - {command: 'roadtx install setuptools'}

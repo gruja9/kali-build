@@ -10,10 +10,9 @@
       - sshuttle
       - joomscan
       - rlwrap
+      - libkrb5-dev
       - krb5-user
       - libreoffice
-      - python3-construct
-      - python3-ldb
       - liblnk-utils
       - ntpdate
       - jq

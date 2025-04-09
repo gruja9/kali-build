@@ -30,19 +30,21 @@ nmap -iL "$scopeFolder/alive-ips.txt" -T3 -p $webPorts -oN "$nmapFolder/web.nmap
 
 ## SMB
 nxc smb "$scopeFolder/alive-ips.txt" > "$nxcFolder/smb-all.nxc"
-cat "$nxcFolder/smb-all.nxc" | grep -i windows > "$nxcFolder/smb-all-windows.nxc"
-cat "$nxcFolder/smb-all.nxc" | grep -i windows | grep $domain > "$nxcFolder/smb-all-windows-$domain.nxc"
-cat "$nxcFolder/smb-all.nxc" | grep -i windows | grep $domain | grep -i server > "$nxcFolder/smb-all-windows-$domain-servers.nxc"
+strings "$nxcFolder/smb-all.nxc" | grep -i windows > "$nxcFolder/smb-all-windows.nxc"
+strings "$nxcFolder/smb-all.nxc" | grep -i windows | grep $domain > "$nxcFolder/smb-all-windows-$domain.nxc"
+strings "$nxcFolder/smb-all.nxc" | grep -i windows | grep $domain | grep -i server > "$nxcFolder/smb-all-windows-$domain-servers.nxc"
+strings "$nxcFolder/smb-all.nxc" | grep -vi windows > "$nxcFolder/smb-all-non-windows.nxc"
 
-cat "$nxcFolder/smb-all-windows-$domain-servers.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/smb-$domain-servers-ips.txt"
-cat "$nxcFolder/smb-all-windows-$domain.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/smb-$domain-ips.txt"
+strings "$nxcFolder/smb-all-windows-$domain-servers.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/smb-$domain-servers-ips.txt"
+strings "$nxcFolder/smb-all-windows-$domain.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/smb-$domain-ips.txt"
+strings "$nxcFolder/smb-all-non-windows.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/smb-non-windows-ips.txt"
 
-cat "$nxcFolder/smb-all-windows-$domain-servers.nxc" | grep signing:False | awk -F' ' '{ print $2 }' > "$scansFolder/smbrelaying-servers.txt"
-cat "$nxcFolder/smb-all-windows-$domain.nxc" | grep signing:False | awk -F' ' '{ print $2 }' > "$scansFolder/smbrelaying.txt"
-cat "$nxcFolder/smb-all-windows-$domain.nxc" | grep signing:False | awk -F' ' '{ print $2,$4 }' > "$reportFolder/smbrelaying.csv"
+strings "$nxcFolder/smb-all-windows-$domain-servers.nxc" | grep signing:False | awk -F' ' '{ print $2 }' > "$scansFolder/smbrelaying-servers.txt"
+strings "$nxcFolder/smb-all-windows-$domain.nxc" | grep signing:False | awk -F' ' '{ print $2 }' > "$scansFolder/smbrelaying.txt"
+strings "$nxcFolder/smb-all-windows-$domain.nxc" | grep signing:False | awk -F' ' '{ print $2,$4 }' > "$reportFolder/smbrelaying.csv"
 
-cat "$nxcFolder/smb-all-windows-$domain.nxc" | grep SMBv1:True | awk -F' ' '{print $2 }' > "$scansFolder/smbv1-ips.txt"
-cat "$nxcFolder/smb-all-windows-$domain.nxc" | grep SMBv1:True | awk -F' ' '{ print $2,$4 }' > "$reportFolder/smbv1.csv"
+strings "$nxcFolder/smb-all-windows-$domain.nxc" | grep SMBv1:True | awk -F' ' '{print $2 }' > "$scansFolder/smbv1-ips.txt"
+strings "$nxcFolder/smb-all-windows-$domain.nxc" | grep SMBv1:True | awk -F' ' '{ print $2,$4 }' > "$reportFolder/smbv1.csv"
 
 ## FTP
 nxc ftp "$scopeFolder/alive-ips.txt" | grep FTP > "$nxcFolder/ftp.nxc"
@@ -59,3 +61,11 @@ cat "$nxcFolder/mssql.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/mssql-ips.
 ## RDP
 nxc rdp "$scopeFolder/alive-ips.txt" | grep RDP > "$nxcFolder/rdp.nxc"
 cat "$nxcFolder/rdp.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/rdp-ips.txt"
+
+## VNC
+nxc vnc "$scopeFolder/alive-ips.txt" | grep VNC > "$nxcFolder/vnc.nxc"
+cat "$nxcFolder/vnc.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/vnc-ips.txt"
+
+## NFS
+nxc nfs "$scopeFolder/alive-ips.txt" | grep NFS > "$nxcFolder/nfs.nxc"
+cat "$nxcFolder/nfs.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/nfs-ips.txt"

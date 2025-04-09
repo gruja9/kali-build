@@ -211,3 +211,4 @@ alias sshaft='docker run --rm -it -e "USERNAME=testing" -e "PASSWORD=testing" -p
 
 # Other aliases
 alias vmware-mount='/usr/bin/vmhgfs-fuse .host:/ ~/vmware-shared -o subtype=vmhgfs-fuse,allow_other'
+alias unsupported="cat $1 | jq -r '.nodes[].props | select( .enabled == true) | .name + \";\" + .operatingsystem'"

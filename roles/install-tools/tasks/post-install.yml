@@ -15,3 +15,13 @@
       name: tailscaled
       enabled: false
     become: true
+
+  - name: "Starting Nxc for the first time"
+    shell: "nxc"
+    ignore_errors: true
+    no_log: true
+
+  - name: "Modifying nxc configuration file"
+    copy:
+      src: "files/nxc.conf"
+      dest: "{{ ansible_env.HOME }}/.nxc/nxc.conf"

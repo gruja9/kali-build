@@ -1,0 +1,10 @@
+---
+- name: "Install Rust"
+  package:
+    name:
+      - rustup
+    state: latest
+  become: true
+
+- name: "Installing Rust libraries"
+  shell: "rustup default stable"

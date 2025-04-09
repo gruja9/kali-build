@@ -17,6 +17,10 @@
     - {name: 'github.com/jfjallid/go-secdump@latest'}
     # Network
     - {name: 'github.com/bettercap/bettercap@latest'}
+    # Web
+    - {name: 'github.com/Chocapikk/wpprobe@latest'}
+    # External
+    - {name: 'github.com/x90skysn3k/brutespray@latest'}
     # Other
     - {name: 'github.com/projectdiscovery/cvemap/cmd/cvemap@latest'}
     - {name: 'github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest'}
