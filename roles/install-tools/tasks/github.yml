@@ -16,7 +16,8 @@
    # - { repo: "carlospolop/PEASS-ng",  regex: "linpeas.sh", location: "{{ ansible_env.HOME }}/Downloads" }
    # - { repo: "carlospolop/PEASS-ng",  regex: "winPEASx64.exe", location: "{{ ansible_env.HOME }}/Downloads" }
    # - { repo: "obsidianmd/obsidian-releases",  regex: '{{ "Obsidian-\d\.\d\.\d+\.AppImage" | regex_escape() }}', location: "{{ ansible_env.HOME }}/Downloads", filename: "obsidian"} # Not needed
-   # - { repo: "ly4k/BloodHound", regex: "BloodHound-linux-x64.zip", location: "{{ ansible_env.HOME }}/Downloads"}
+    - { repo: "ly4k/BloodHound", regex: "BloodHound-linux-x64.zip", location: "{{ ansible_env.HOME }}/Downloads/BH-ly4k"}
+    - { repo: "SpecterOps/BloodHound-Legacy", regex: "BloodHound-linux-x64.zip", location: "{{ ansible_env.HOME }}/Downloads/BH-legacy"}
     - { repo: "RustScan/RustScan", regex: "rustscan.deb", location: "{{ ansible_env.HOME }}/Downloads"}
   async: 45
   poll: 0

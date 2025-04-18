@@ -10,12 +10,6 @@
       become: true
       become_method: sudo
 
-#    - name: "Making the BloodHound binary executable"
-#      file:
-#        path: "{{ ansible_env.HOME }}/Downloads/BloodHound-linux-x64/BloodHound"
-#        state: file
-#        mode: u+x
-
     - name: "Creating BloodHound config directory"
       file:
         path: "{{ ansible_env.HOME }}/.config/bloodhound"
@@ -32,6 +26,29 @@
         responses:
           "Do you want to overwrite it?": "y"
           "What to do with the existing queries?": "d"
+
+- name: "Installing BloodHound CE"
+  block:
+    - name: "Creating the directory"
+      file:
+        path: "{{ ansible_env.HOME }}/Downloads/BHCE"
+        state: directory
+
+    - name: "Downloading Bloodhound CE CLI"
+      get_url:
+        url: "https://github.com/SpecterOps/bloodhound-cli/releases/latest/download/bloodhound-cli-linux-amd64.tar.gz"
+        dest: "{{ ansible_env.HOME }}/Downloads/BHCE/"
+        mode: 0777
+
+    - name: "Extract BHCE CLI archive"
+      unarchive:
+        src: "{{ ansible_env.HOME }}/Downloads/BHCE/bloodhound-cli-linux-amd64.tar.gz"
+        dest: "{{ ansible_env.HOME }}/Downloads/BHCE"
+
+    - name: "Install BHCE"
+      shell: "{{ ansible_env.HOME }}/Downloads/BHCE/bloodhound-cli install"
+      args:
+        chdir: "{{ ansible_env.HOME }}/Downloads/BHCE"
 
 - name: "Installing third-party tools"
   block:
