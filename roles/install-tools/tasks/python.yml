@@ -25,7 +25,8 @@
     - { name: 'bloodhound', url: 'https://github.com/dirkjanm/BloodHound.py'}
     - { name: 'bloodyad', url: 'https://github.com/CravateRouge/bloodyAD'}
     - { name: 'bofhound', url: 'https://github.com/coffeegist/bofhound'}
-    - { name: 'certipy-ad', url: 'https://github.com/ly4k/Certipy'}
+    #- { name: 'certipy-ad', url: 'https://github.com/ly4k/Certipy'}
+    - { name: 'certipy-ad', url: 'https://github.com/zimedev/certipy-merged.git@main'}
     - { name: 'pypykatz', url: 'https://github.com/skelsec/pypykatz'}
     - { name: 'cmloot', url: 'https://github.com/shelltrail/cmloot'}
     - { name: 'coercer', url: 'https://github.com/p0dalirius/Coercer'}
@@ -55,6 +56,7 @@
     - { name: 'ntdissector', url: 'https://github.com/synacktiv/ntdissector'}
     - { name: 'soapy', url: 'https://github.com/xforcered/SoaPy'}
     - { name: 'powerview', url: 'https://github.com/aniqfakhrul/powerview.py'}
+    - { name: 'gpohound', url: 'https://github.com/cogiceo/GPOHound'}
     # External
     - { name: 'pymetasec', url: 'https://github.com/m8sec/pymeta'}
     #- { name: 'crosslinked', url: 'https://github.com/m8sec/CrossLinked'} # Temporary issue with lxml 4.9.4

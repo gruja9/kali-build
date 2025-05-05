@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # This tool will perform initial reconnaissance in an AD assessment utilizing Nmap and Nxc
-# vikprg
 
 if [ $# -ne 1 ]
 then
@@ -20,7 +19,7 @@ reportFolder="$pentestFolder/Report"
 webPorts="80,443,8080,8443,8081,8082,8083,8084,8085,8888"
 
 # Ping Scan
-nmap -iL "$scopeFolder/scope.txt" -sn -oN "$nmapFolder/ping.nmap" -n >/dev/null
+nmap -iL "$scopeFolder/scope.txt" -sn -PS445 -PA445 -oN "$nmapFolder/ping.nmap" -n >/dev/null
 cat "$nmapFolder/ping.nmap" | grep "scan report" | cut -d " " -f5 > "$scopeFolder/alive-ips.txt"
 
 # Web Port Scan
@@ -31,8 +30,8 @@ nmap -iL "$scopeFolder/alive-ips.txt" -T3 -p $webPorts -oN "$nmapFolder/web.nmap
 ## SMB
 nxc smb "$scopeFolder/alive-ips.txt" > "$nxcFolder/smb-all.nxc"
 strings "$nxcFolder/smb-all.nxc" | grep -i windows > "$nxcFolder/smb-all-windows.nxc"
-strings "$nxcFolder/smb-all.nxc" | grep -i windows | grep $domain > "$nxcFolder/smb-all-windows-$domain.nxc"
-strings "$nxcFolder/smb-all.nxc" | grep -i windows | grep $domain | grep -i server > "$nxcFolder/smb-all-windows-$domain-servers.nxc"
+strings "$nxcFolder/smb-all.nxc" | grep -i windows | grep -i $domain > "$nxcFolder/smb-all-windows-$domain.nxc"
+strings "$nxcFolder/smb-all.nxc" | grep -i windows | grep -i $domain | grep -i server > "$nxcFolder/smb-all-windows-$domain-servers.nxc"
 strings "$nxcFolder/smb-all.nxc" | grep -vi windows > "$nxcFolder/smb-all-non-windows.nxc"
 
 strings "$nxcFolder/smb-all-windows-$domain-servers.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/smb-$domain-servers-ips.txt"
@@ -63,9 +62,9 @@ nxc rdp "$scopeFolder/alive-ips.txt" | grep RDP > "$nxcFolder/rdp.nxc"
 cat "$nxcFolder/rdp.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/rdp-ips.txt"
 
 ## VNC
-nxc vnc "$scopeFolder/alive-ips.txt" | grep VNC > "$nxcFolder/vnc.nxc"
-cat "$nxcFolder/vnc.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/vnc-ips.txt"
+#nxc vnc "$scopeFolder/alive-ips.txt" | grep VNC > "$nxcFolder/vnc.nxc"
+#cat "$nxcFolder/vnc.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/vnc-ips.txt"
 
 ## NFS
-nxc nfs "$scopeFolder/alive-ips.txt" | grep NFS > "$nxcFolder/nfs.nxc"
-cat "$nxcFolder/nfs.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/nfs-ips.txt"
+#nxc nfs "$scopeFolder/alive-ips.txt" | grep NFS > "$nxcFolder/nfs.nxc"
+#cat "$nxcFolder/nfs.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/nfs-ips.txt"
