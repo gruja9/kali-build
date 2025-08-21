@@ -12,9 +12,10 @@
       - rlwrap
       - libkrb5-dev
       - krb5-user
+      - krb5-pkinit
       - libreoffice
       - liblnk-utils
-      - ntpdate
+      - ntpsec-ntpdate
       - jq
       - azure-cli
       - trufflehog

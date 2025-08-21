@@ -7,6 +7,7 @@
       - python3-argcomplete
       - python3-poetry
       - python3-ldap
+      - python3-nftables
       - libldap2-dev
       - libsasl2-dev
     state: latest
@@ -17,6 +18,7 @@
     name: "{{ item.name }}"
     source: "git+{{ item.url }}"
     state: latest
+    system_site_packages: "{% if item.system_site_packages is defined %}{{ item.system_site_packages }}{% else %}false{% endif %}"
   loop:
     # AD
     - { name: 'ADcheck', url: 'https://github.com/CobblePot59/ADcheck'}
@@ -26,7 +28,7 @@
     - { name: 'bloodyad', url: 'https://github.com/CravateRouge/bloodyAD'}
     - { name: 'bofhound', url: 'https://github.com/coffeegist/bofhound'}
     #- { name: 'certipy-ad', url: 'https://github.com/ly4k/Certipy'}
-    - { name: 'certipy-ad', url: 'https://github.com/zimedev/certipy-merged.git@main'}
+    #- { name: 'certipy-ad', url: 'https://github.com/zimedev/certipy-merged.git@main'}
     - { name: 'pypykatz', url: 'https://github.com/skelsec/pypykatz'}
     - { name: 'cmloot', url: 'https://github.com/shelltrail/cmloot'}
     - { name: 'coercer', url: 'https://github.com/p0dalirius/Coercer'}
@@ -57,6 +59,8 @@
     - { name: 'soapy', url: 'https://github.com/xforcered/SoaPy'}
     - { name: 'powerview', url: 'https://github.com/aniqfakhrul/powerview.py'}
     - { name: 'gpohound', url: 'https://github.com/cogiceo/GPOHound'}
+    - { name: 'wspcoerce', url: 'https://github.com/RedTeamPentesting/wspcoerce'}
+    - { name: 'wsuks', url: 'https://github.com/NeffIsBack/wsuks', system_site_packages: "true"}
     # External
     - { name: 'pymetasec', url: 'https://github.com/m8sec/pymeta'}
     #- { name: 'crosslinked', url: 'https://github.com/m8sec/CrossLinked'} # Temporary issue with lxml 4.9.4
@@ -78,7 +82,7 @@
     - { name: 'pyinstaller', url: 'https://github.com/pyinstaller/pyinstaller'}
     - { name: 'arsenal-cli', url: 'https://github.com/Orange-Cyberdefense/arsenal'}
     - { name: 'pwncat-cs', url: 'https://github.com/calebstewart/pwncat'}
-    - { name: 'exegol', url: 'https://github.com/ThePorgs/Exegol'}
+    #- { name: 'exegol', url: 'https://github.com/ThePorgs/Exegol'}
     - { name: 'hashcathelper', url: 'https://github.com/SySS-Research/hashcathelper'}
     - { name: 'wesng', url: 'https://github.com/bitsadmin/wesng'}
     - { name: 'pypassgen', url: 'https://github.com/puzzlepeaches/pypassgen'}
@@ -89,9 +93,11 @@
 - name: "Pipx: Installing from PyPI"
   community.general.pipx:
     name: "{{ item.name }}"
+    source: "{% if item.source is defined %}{{ item.source }}{% else %}{{ item.name }}{% endif %}"
     state: latest
   loop:
     # AD
+    - { name: 'certipy-ad'}
     - { name: 'roadrecon'}
     - { name: 'roadtx'}
     - { name: 'seamlesspass'}
@@ -100,6 +106,7 @@
     - { name: 'poetry'}
     - { name: 'smbclientng'}
     - { name: 'conpass'}
+    - { name: 'evil-winrm-py', source: 'evil-winrm-py[kerberos]'}
     # Web
     - { name: 'webcap'}
 

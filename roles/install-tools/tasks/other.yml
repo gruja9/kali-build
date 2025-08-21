@@ -47,6 +47,7 @@
 
     - name: "Install BHCE"
       shell: "{{ ansible_env.HOME }}/Downloads/BHCE/bloodhound-cli install"
+      become: true
       args:
         chdir: "{{ ansible_env.HOME }}/Downloads/BHCE"
 
