@@ -43,6 +43,7 @@
     - { name: 'man-spider', url: 'https://github.com/blacklanternsecurity/MANSPIDER'}
     - { name: 'mitm6', url: 'https://github.com/dirkjanm/mitm6'}
     - { name: 'mssql-spider', url: 'https://github.com/dadevel/mssql-spider.git@main'}
+    - { name: 'mssqlpwner', url: 'https://github.com/ScorpionesLabs/MSSqlPwner'}
     - { name: 'netexec', url: 'https://github.com/Pennyw0rth/NetExec'}
     - { name: 'pre2k', url: 'https://github.com/garrettfoster13/pre2k'}
     - { name: 'pyldapsearch', url: 'https://github.com/fortalice/pyldapsearch'}
@@ -61,6 +62,11 @@
     - { name: 'gpohound', url: 'https://github.com/cogiceo/GPOHound'}
     - { name: 'wspcoerce', url: 'https://github.com/RedTeamPentesting/wspcoerce'}
     - { name: 'wsuks', url: 'https://github.com/NeffIsBack/wsuks', system_site_packages: "true"}
+    - { name: 'gpohound', url: 'https://github.com/cogiceo/GPOHound'}
+    - { name: 'spearspray', url: 'https://github.com/sikumy/spearspray'}
+    - { name: 'conpass', url: 'https://github.com/login-securite/conpass'}
+    - { name: 'keepwn', url: 'https://github.com/Orange-Cyberdefense/KeePwn'}
+    - { name: 'taskhound', url: 'https://github.com/1r0BIT/TaskHound'}
     # External
     - { name: 'pymetasec', url: 'https://github.com/m8sec/pymeta'}
     #- { name: 'crosslinked', url: 'https://github.com/m8sec/CrossLinked'} # Temporary issue with lxml 4.9.4
@@ -69,6 +75,7 @@
     - { name: 'spraycharles', url: 'https://github.com/Tw1sm/spraycharles'}
     - { name: 'thumbscr-ews', url: 'https://github.com/sensepost/thumbscr-ews'}
     #- { name: 'fireproxng', url: 'https://github.com/Sprocket-Security/fireproxng'} # # Temporary issue with lxml 4.9.4
+    - { name: 'omniprox', url: 'https://github.com/ZephrFish/OmniProx'}
     # Azure
     - { name: 'o365spray', url: 'https://github.com/0xZDH/o365spray'}
     - { name: 'aadoutsider', url: 'https://github.com/synacktiv/AADOutsider-py'}

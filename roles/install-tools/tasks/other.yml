@@ -10,6 +10,18 @@
       become: true
       become_method: sudo
 
+    - name: "Creating Neo4j plugins directory"
+      file:
+        path: "/usr/share/neo4j/plugins"
+        state: directory
+      become: true
+
+    - name: "Installing APOC plugin"
+      copy:
+        src: "files/apoc-4.4.0.38-all.jar"
+        dest: "/usr/share/neo4j/plugins/apoc-4.4.0.38-all.jar"
+      become: true
+
     - name: "Creating BloodHound config directory"
       file:
         path: "{{ ansible_env.HOME }}/.config/bloodhound"
@@ -19,10 +31,15 @@
       copy:
         src: "files/custom-bh-queries.json"
         dest: "{{ ansible_env.HOME }}/.config/bloodhound/custom-bh-queries.json"
+        
+    - name: "Copying custom GPOHound BloodHound queries from Ansible"
+      copy:
+        src: "files/custom-gpohound-bh-queries.json"
+        dest: "{{ ansible_env.HOME }}/.config/bloodhound/custom-gpohound-bh-queries.json"
 
     - name: "Downloading custom queries"
       expect:
-        command: "/usr/bin/ruby {{ ansible_env.HOME }}/Downloads/bqm/bin/bqm -o {{ ansible_env.HOME }}/.config/bloodhound/customqueries.json -i {{ ansible_env.HOME }}/.config/bloodhound/custom-bh-queries.json"
+        command: "/usr/bin/ruby {{ ansible_env.HOME }}/Downloads/bqm/bin/bqm -o {{ ansible_env.HOME }}/.config/bloodhound/customqueries.json -i {{ ansible_env.HOME }}/.config/bloodhound/custom-bh-queries.json,{{ ansible_env.HOME }}/.config/bloodhound/custom-gpohound-bh-queries.json"
         responses:
           "Do you want to overwrite it?": "y"
           "What to do with the existing queries?": "d"

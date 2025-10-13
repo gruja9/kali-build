@@ -32,4 +32,4 @@
   shell: "{{ ansible_env.HOME }}/.pyenv/bin/pyenv install {{ item.version }}"
   loop:
     - {version: "3.10.9"}
-    - {version: "2.7.18"}
+  #  - {version: "2.7.18"} # Disabled due to an error when installing
