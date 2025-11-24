@@ -67,6 +67,8 @@
     - { name: 'conpass', url: 'https://github.com/login-securite/conpass'}
     - { name: 'keepwn', url: 'https://github.com/Orange-Cyberdefense/KeePwn'}
     - { name: 'taskhound', url: 'https://github.com/1r0BIT/TaskHound'}
+    - { name: 'daclsearch', ur: 'https://github.com/cogiceo/daclsearch'}
+    - { name: 'sharehound', url: 'https://github.com/p0dalirius/sharehound'}
     # External
     - { name: 'pymetasec', url: 'https://github.com/m8sec/pymeta'}
     #- { name: 'crosslinked', url: 'https://github.com/m8sec/CrossLinked'} # Temporary issue with lxml 4.9.4

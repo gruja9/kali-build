@@ -3,4 +3,4 @@
 * Install Ansible: `python3 -m pip install ansible`
 * Install requirements: `ansible-galaxy install -r requirements.yml`
 * Make sure we have a sudo token (`sudo whoami`)
-* Run the playbook: `ansible-playbook main.yml`
+* Run the playbook: `ansible-playbook main.yml -K`

@@ -48,6 +48,12 @@
   become: true
   become_method: sudo
 
+- name: Create directory for Burp Suite in home
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.BurpSuite"
+    state: directory
+    mode: '0755'
+
 - name: Download jar files
   ansible.builtin.get_url:
     url: "{{ item.value.url }}"
@@ -61,5 +67,5 @@
 - name: Copy BurpSuite Community Config
   template:
     src: "templates/UserConfigCommunity.json.j2"
-    dest: "/home/{{ ansible_user_id }}/.BurpSuite/UserConfigCommunity.json"
+    dest: "{{ ansible_env.HOME }}/.BurpSuite/UserConfigCommunity.json"
 
