@@ -19,7 +19,6 @@
       - liblnk-utils
       - ntpsec-ntpdate
       - jq
-      - azure-cli
       - trufflehog
       - sprayhound
       - wimtools

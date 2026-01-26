@@ -27,7 +27,7 @@
     - {name: 'github.com/tomnomnom/gron@latest'}
     #- {name: 'github.com/xjasonlyu/tun2socks/v2@latest'} # Broken
     - {name: 'github.com/Macmod/godap@latest'}
-    - {name: 'github.com/TheManticoreProject/Delegations@latest'}
+    #- {name: 'github.com/TheManticoreProject/Delegations@latest'} Broken
     - {name: 'github.com/jfjallid/kerbtool@latest'}
     - {name: 'github.com/g0ldencybersec/Caduceus/cmd/caduceus@latest'}
     - {name: 'github.com/FalconOpsLLC/goexec@latest', opt: '-ldflags="-s -w"'}

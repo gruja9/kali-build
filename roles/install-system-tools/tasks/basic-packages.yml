@@ -28,8 +28,8 @@
       - libxcb-icccm4
       - libxcb-keysyms1
       - libnotify-bin
-      - libavcodec61
-      - libavdevice61
+      #- libavcodec62
+      #- libavdevice62
     state: latest
   become: true
   become_method: sudo

@@ -46,7 +46,7 @@
     - { name: 'mssqlpwner', url: 'https://github.com/ScorpionesLabs/MSSqlPwner'}
     - { name: 'netexec', url: 'https://github.com/Pennyw0rth/NetExec'}
     - { name: 'pre2k', url: 'https://github.com/garrettfoster13/pre2k'}
-    - { name: 'pyldapsearch', url: 'https://github.com/fortalice/pyldapsearch'}
+    - { name: 'pyldapsearch', url: 'https://github.com/Tw1sm/pyldapsearch'}
     - { name: 'pysnaffler', url: 'https://github.com/skelsec/pysnaffler'}
     - { name: 'pywerview', url: 'https://github.com/the-useless-one/pywerview'}
     - { name: 'scrtdnsdump', url: 'https://github.com/scrt/scrtdnsdump'}
@@ -67,7 +67,7 @@
     - { name: 'conpass', url: 'https://github.com/login-securite/conpass'}
     - { name: 'keepwn', url: 'https://github.com/Orange-Cyberdefense/KeePwn'}
     - { name: 'taskhound', url: 'https://github.com/1r0BIT/TaskHound'}
-    - { name: 'daclsearch', ur: 'https://github.com/cogiceo/daclsearch'}
+    - { name: 'daclsearch', url: 'https://github.com/cogiceo/daclsearch'}
     - { name: 'sharehound', url: 'https://github.com/p0dalirius/sharehound'}
     # External
     - { name: 'pymetasec', url: 'https://github.com/m8sec/pymeta'}
@@ -78,11 +78,12 @@
     - { name: 'thumbscr-ews', url: 'https://github.com/sensepost/thumbscr-ews'}
     #- { name: 'fireproxng', url: 'https://github.com/Sprocket-Security/fireproxng'} # # Temporary issue with lxml 4.9.4
     - { name: 'omniprox', url: 'https://github.com/ZephrFish/OmniProx'}
-    # Azure
+    # Cloud
     - { name: 'o365spray', url: 'https://github.com/0xZDH/o365spray'}
     - { name: 'aadoutsider', url: 'https://github.com/synacktiv/AADOutsider-py'}
     - { name: 'graphspy', url: 'https://github.com/RedByte1337/GraphSpy'}
     - { name: "Graphpython", url: 'https://github.com/mlcsec/Graphpython'}
+    - { name: 'cloud_enum', url: 'https://github.com/initstring/cloud_enum'}
     # Web
     - { name: 'arjun', url: 'https://github.com/s0md3v/Arjun'}
     - { name: 'droopescan', url: 'https://github.com/SamJoan/droopescan'}
@@ -116,6 +117,8 @@
     - { name: 'smbclientng'}
     - { name: 'conpass'}
     - { name: 'evil-winrm-py', source: 'evil-winrm-py[kerberos]'}
+    - { name: 'bloodhound-ce'}
+    - { name: "profilehound"}
     # Web
     - { name: 'webcap'}
 
