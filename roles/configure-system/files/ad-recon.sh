@@ -43,7 +43,7 @@ strings "$nxcFolder/smb-all-windows-$domain.nxc" | grep signing:False | awk -F' 
 strings "$nxcFolder/smb-all-windows-$domain.nxc" | grep signing:False | awk -F' ' '{ print $2,$4 }' > "$reportFolder/smbrelaying.csv"
 
 strings "$nxcFolder/smb-all-windows-$domain.nxc" | grep SMBv1:True | awk -F' ' '{print $2 }' > "$scansFolder/smbv1-ips.txt"
-strings "$nxcFolder/smb-all-windows-$domain.nxc" | grep SMBv1:True | awk -F' ' '{ print $2,$4 }' > "$reportFolder/smbv1.csv"
+strings "$nxcFolder/smb-all-windows-$domain.nxc" | grep SMBv1:True | awk -F' ' '{ print $4 }' > "$reportFolder/smbv1.csv"
 
 strings "$nxcFolder/smb-all-windows-$domain.nxc" | grep "Null Auth" | awk -F' ' '{print $2 }' > "$scansFolder/smb-windows-null-ips.txt"
 strings "$nxcFolder/smb-all-non-windows.nxc" | grep "Null Auth" | awk -F' ' '{print $2 }' > "$scansFolder/smb-non-windows-null-ips.txt"

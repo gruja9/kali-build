@@ -33,3 +33,8 @@
   loop:
     - {version: "3.10.9"}
   #  - {version: "2.7.18"} # Disabled due to an error when installing
+
+- name: "Installing Uv"
+  community.general.pipx:
+    name: uv
+    state: latest
