@@ -9,6 +9,8 @@ then
 fi
 domain=$1
 
+alias gowitness='docker run --rm -v `pwd`:/data -p7171:7171 leonjza/gowitness gowitness'
+
 # Configurations
 pentestFolder="$HOME/Pentest"
 scopeFolder="$pentestFolder/Scope"
@@ -16,14 +18,26 @@ scansFolder="$pentestFolder/Scans"
 nmapFolder="$pentestFolder/Scans/Nmap"
 nxcFolder="$pentestFolder/Scans/Nxc"
 reportFolder="$pentestFolder/Report"
-webPorts="80,443,8080,8443,8081,8082,8083,8084,8085,8888"
+ports="21,22,23,53,80,88,389,443,445,1433,1521,1666,2049,2375,2376,3000,3306,3389,5000,5432,5601,5900,6379,6443,7001,7990,8000,8080,8081,8082,8161,8443,8530,8531,8888,8929,9000,9001,9090,9100,9101,9200,9443,10123,15672,27017,u:161,u:623"
 
-# Ping Scan
-nmap -iL "$scopeFolder/scope.txt" -sn -PS445 -PA445 -oN "$nmapFolder/ping.nmap" -n >/dev/null
-cat "$nmapFolder/ping.nmap" | grep "scan report" | cut -d " " -f5 > "$scopeFolder/alive-ips.txt"
+# Nmap Ping Scan
+#nmap -iL "$scopeFolder/scope.txt" -sn -PS445 -PA445 -n -oN "$nmapFolder/ping.nmap" >/dev/null
+#cat "$nmapFolder/ping.nmap" | grep "scan report" | cut -d " " -f5 > "$scopeFolder/alive-ips.txt"
 
 # Web Port Scan
-nmap -iL "$scopeFolder/alive-ips.txt" -T3 -p $webPorts -oN "$nmapFolder/web.nmap" -oX "$nmapFolder/web.xml" -R --open >/dev/null
+#nmap -iL "$scopeFolder/alive-ips.txt" -T3 -p $webPorts -oN "$nmapFolder/web.nmap" -oX "$nmapFolder/web.xml" -R --open >/dev/null
+
+# Naabu Ping Scan
+mapcidr -cl "$scopeFolder/scope.txt" -silent > "$scopeFolder/scope-ips.txt"
+sudo ~/go/bin/naabu -silent -l "$scopeFolder/scope-ips.txt" -sn -wn -ps 80,443,445,3389,5985 -pa 80,443,445,3389,5985 -pe -arp -iv 4 > "$scopeFolder/alive-ips.txt"
+
+# Naabu Port Scan
+naabu -silent -l "$scopeFolder/alive-ips.txt" -p $ports -iv 4 -Pn > "$scansFolder/open-ports.csv"
+cat "$scansFolder/open-ports.csv" | cut -d ":" -f1 > "$scopeFolder/alive-ips-ports.txt"
+
+# Web Scans
+~/go/bin/httpx -silent -l "$scopeFolder/alive-ips-ports.txt" -p $ports -o "$scansFolder/web.httpx" -ss -system-chrome
+gowitness scan file -f /data/Pentest/Scans/web.httpx
 
 # Nxc Scans
 
@@ -72,3 +86,9 @@ cat "$nxcFolder/rdp.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/rdp-ips.txt"
 ## NFS
 #nxc nfs "$scopeFolder/alive-ips.txt" | grep NFS > "$nxcFolder/nfs.nxc"
 #cat "$nxcFolder/nfs.nxc" | awk -F' ' '{ print $2 }' > "$scansFolder/nfs-ips.txt"
+
+# Nuclei
+~/go/bin/nuclei -l "$scopeFolder/alive-ips-ports.txt" -tags devops,cicd,jenkins,gitlab,kubernetes,docker,grafana,prometheus,mysql,postgres,mongodb,redis,mssql,wordpress,drupal,joomla,tomcat,weblogic -severity medium,high,critical -o "$scansFolder/vulns-devops.nuclei"
+~/go/bin/nuclei -l "$scopeFolder/alive-ips-ports.txt" -tags default-login -severity info,low,medium,high,critical -o "$scansFolder/default-creds.nuclei"
+~/go/bin/nuclei -l "$scopeFolder/alive-ips-ports.txt" -tags panel,dashboard,exposed,config -severity medium,high,critical -o "$scansFolder/exposed-panels.nuclei"
+~/go/bin/nuclei -l "$scopeFolder/alive-ips-ports.txt" -tags cve -severity high,critical -o "$scansFolder/cves.nuclei"

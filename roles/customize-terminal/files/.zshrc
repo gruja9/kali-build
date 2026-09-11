@@ -167,7 +167,7 @@ xterm*|rxvt*)
 esac
 
 # PATH
-export PATH="$HOME/.local/bin:$HOME/go/bin:/usr/local/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/go/bin:/usr/local/go/bin:$HOME/.pyenv:$PATH"
 
 # General aliases
 alias rm="rm -f"
@@ -176,8 +176,6 @@ alias myip='ip a s | grep eth0 | grep inet | cut -d " " -f6'
 alias vpnip='ip a s | grep tun0 | grep inet | cut -d " " -f6'
 
 # For pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 

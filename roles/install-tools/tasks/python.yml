@@ -59,6 +59,7 @@
     - { name: 'ntdissector', url: 'https://github.com/synacktiv/ntdissector'}
     - { name: 'soapy', url: 'https://github.com/xforcered/SoaPy'}
     - { name: 'powerview', url: 'https://github.com/aniqfakhrul/powerview.py'}
+    - { name: 'gpoParser', url: 'https://github.com/synacktiv/gpoParser'}
     - { name: 'gpohound', url: 'https://github.com/cogiceo/GPOHound'}
     - { name: 'wspcoerce', url: 'https://github.com/RedTeamPentesting/wspcoerce'}
     - { name: 'wsuks', url: 'https://github.com/NeffIsBack/wsuks', system_site_packages: "true"}
@@ -68,7 +69,15 @@
     - { name: 'keepwn', url: 'https://github.com/Orange-Cyberdefense/KeePwn'}
     - { name: 'taskhound', url: 'https://github.com/1r0BIT/TaskHound'}
     - { name: 'daclsearch', url: 'https://github.com/cogiceo/daclsearch'}
-    - { name: 'sharehound', url: 'https://github.com/p0dalirius/sharehound'}
+    - { name: 'adwsdomaindump', url: 'https://github.com/mverschu/adwsdomaindump'}
+    - { name: 'certsync', url: 'https://github.com/zblurx/certsync'}
+    - { name: 'socksrelayd', url: 'https://github.com/mverschu/SOCKSRelayd'}
+    - { name: 'ghost-spn', url: 'https://github.com/mverschu/ghostSPN'}
+    - { name: 'grouppolicybackdoor', url: 'https://github.com/synacktiv/GroupPolicyBackdoor'}
+    - { name: 'adecrypt', url: 'https://github.com/qu35t-code/adecrypt'}
+    - { name: 'bloodbash', url: 'https://github.com/SquidSec/BloodBash'}
+    - { name: 'adpathfinder', url: 'https://github.com/NetSPI/AD-PathFinder'}
+    - { name: 'wdsenum', url: 'https://github.com/cogiceo/WDSEnum'}
     # External
     - { name: 'pymetasec', url: 'https://github.com/m8sec/pymeta'}
     #- { name: 'crosslinked', url: 'https://github.com/m8sec/CrossLinked'} # Temporary issue with lxml 4.9.4
@@ -119,6 +128,7 @@
     - { name: 'evil-winrm-py', source: 'evil-winrm-py[kerberos]'}
     - { name: 'bloodhound-ce'}
     - { name: "profilehound"}
+    - { name: 'kerbad'}
     # Web
     - { name: 'webcap'}
 

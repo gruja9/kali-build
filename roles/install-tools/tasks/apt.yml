@@ -25,6 +25,7 @@
       - wmi-client
       - xtightvncviewer
       - braa
+      - libpcap-dev
     state: latest
   become: true
   become_method: sudo

@@ -15,19 +15,24 @@
     - {name: 'github.com/ropnop/kerbrute@master'}
     - {name: 'github.com/lkarlslund/ldapnomnom@latest'}
     - {name: 'github.com/jfjallid/go-secdump@latest'}
+    - {name: 'github.com/jfjallid/kerbtool@latest'}
+    #- {name: 'github.com/TheManticoreProject/Delegations@latest'} Broken
+    - {name: 'github.com/Macmod/godap@latest'}
+    - {name: 'github.com/FalconOpsLLC/goexec@latest', opt: '-ldflags="-s -w"'}
     # Network
-    - {name: 'github.com/bettercap/bettercap@latest'}
+    - {name: 'github.com/bettercap/bettercap/v2@latest'}
     # Web
     - {name: 'github.com/Chocapikk/wpprobe@latest'}
     # External
     - {name: 'github.com/x90skysn3k/brutespray@latest'}
     # Other
-    - {name: 'github.com/projectdiscovery/cvemap/cmd/cvemap@latest'}
+    - {name: 'github.com/projectdiscovery/vulnx/v2/cmd/vulnx@latest'}
     - {name: 'github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest'}
     - {name: 'github.com/tomnomnom/gron@latest'}
     #- {name: 'github.com/xjasonlyu/tun2socks/v2@latest'} # Broken
-    - {name: 'github.com/Macmod/godap@latest'}
-    #- {name: 'github.com/TheManticoreProject/Delegations@latest'} Broken
-    - {name: 'github.com/jfjallid/kerbtool@latest'}
     - {name: 'github.com/g0ldencybersec/Caduceus/cmd/caduceus@latest'}
-    - {name: 'github.com/FalconOpsLLC/goexec@latest', opt: '-ldflags="-s -w"'}
+    - {name: 'github.com/projectdiscovery/httpx/cmd/httpx@latest'}
+    - {name: 'github.com/praetorian-inc/brutus/cmd/brutus@latest'}
+    - {name: 'github.com/projectdiscovery/naabu/v2/cmd/naabu@latest'}
+    - {name: 'github.com/praetorian-inc/fingerprintx/cmd/fingerprintx@latest'}
+    - {name: 'github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest'}
