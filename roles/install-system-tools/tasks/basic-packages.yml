@@ -8,6 +8,7 @@
       - python3-venv
       - python3-dev
       - pkg-config
+      - pyenv-runtime
       - libfuse3-dev
       - openssl
       - pipx
