@@ -27,6 +27,7 @@
       - braa
       - libpcap-dev
       - azure-cli
+      - lala
     state: latest
   become: true
   become_method: sudo
