@@ -26,6 +26,7 @@
       - xtightvncviewer
       - braa
       - libpcap-dev
+      - azure-cli
     state: latest
   become: true
   become_method: sudo
