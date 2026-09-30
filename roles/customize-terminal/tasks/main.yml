@@ -1,4 +1,4 @@
 ---
-- include_tasks: "terminal.yml"
+#- include_tasks: "terminal.yml"
 - include_tasks: "tmux.yml"
 - include_tasks: "zsh.yml"

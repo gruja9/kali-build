@@ -7,13 +7,16 @@
       - python3-pip
       - python3-venv
       - python3-dev
+      - python3-netifaces
       - pkg-config
       - pyenv-runtime
       - libfuse3-dev
       - openssl
+      - curl
       - pipx
       - apt-transport-https
-      #- golang
+      - software-properties-common
+      - gnupg2
       - libkrb5-dev
       - krb5-config
       - libpoppler-cpp-dev
@@ -22,7 +25,6 @@
       - libpcap-dev
       - libusb-1.0-0-dev
       - libnetfilter-queue-dev
-      - powershell
       - libegl1
       - libxcb-cursor0
       - libxkbcommon-x11-0
@@ -31,6 +33,9 @@
       - libnotify-bin
       #- libavcodec62
       #- libavdevice62
+      - vim
+      - ruby
+      - net-tools
     state: latest
   become: true
   become_method: sudo

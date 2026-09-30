@@ -17,7 +17,7 @@
     become: true
 
   - name: "Starting Nxc for the first time"
-    shell: "nxc"
+    shell: "{{ ansible_env.HOME }}/.local/bin/nxc"
     ignore_errors: true
     no_log: true
 

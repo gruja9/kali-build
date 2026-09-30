@@ -21,6 +21,7 @@
     system_site_packages: "{% if item.system_site_packages is defined %}{{ item.system_site_packages }}{% else %}false{% endif %}"
   loop:
     # AD
+    - { name: 'Responder-poisoner', url: 'https://github.com/lgandx/Responder'}
     - { name: 'ADcheck', url: 'https://github.com/CobblePot59/ADcheck'}
     - { name: 'adidnsdump', url: 'https://github.com/dirkjanm/adidnsdump'}
     - { name: 'badsecrets', url: 'https://github.com/blacklanternsecurity/badsecrets' }
@@ -130,7 +131,7 @@
     - { name: "profilehound"}
     - { name: 'kerbad'}
     # Web
-    - { name: 'webcap'}
+    #- { name: 'webcap'}
 
 - name: "Installing pip tools"
   pip:

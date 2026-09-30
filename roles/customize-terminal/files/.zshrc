@@ -146,7 +146,7 @@ if [ "$color_prompt" = yes ]; then
     debian_chroot=$(cat /etc/debian_chroot)
     fi
 
-    interface="eth0"
+    interface="ens33"
     ip=$(ip addr show $interface | grep inet -w | cut -d " " -f6 | cut -d "/" -f1)
 
     source ~/.oh-my-zsh/custom/plugins/zsh-git-prompt/zshrc.sh
@@ -172,7 +172,7 @@ export PATH="$HOME/.local/bin:$HOME/go/bin:/usr/local/go/bin:$HOME/.pyenv:$PATH"
 # General aliases
 alias rm="rm -f"
 alias zshconfig="$EDITOR ~/.zshrc"
-alias myip='ip a s | grep eth0 | grep inet | cut -d " " -f6'
+alias myip='ip a s | grep ens33 | grep inet | cut -d " " -f6'
 alias vpnip='ip a s | grep tun0 | grep inet | cut -d " " -f6'
 
 # For pyenv
@@ -196,8 +196,8 @@ export DOTNET_ROOT=$HOME/Downloads/dotnet
 export PATH=$PATH:$DOTNET_ROOT
 
 # Tools integrations
-source ~/.local/share/impacket-zsh-integration/krbconf.zsh
-source ~/.local/share/impacket-zsh-integration/proxyconf.zsh
+source ~/.local/share/impacket-shell-integration/krbconf.sh
+source ~/.local/share/impacket-shell-integration/proxyconf.sh
 
 # Tools aliases
 alias a="arsenal"

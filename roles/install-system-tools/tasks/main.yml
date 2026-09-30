@@ -2,5 +2,5 @@
 - include_tasks: "basic-packages.yml"
 - include_tasks: "pyenv.yml"
 - include_tasks: "docker-engine.yml"
-- include_tasks: "sublime.yml"
 - include_tasks: "rust.yml"
+#- include_tasks: "add-repositories.yml"

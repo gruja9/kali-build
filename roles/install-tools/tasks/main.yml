@@ -1,5 +1,6 @@
 ---
 - include_tasks: apt.yml
+- include_tasks: snap.yml
 - include_tasks: python.yml
 - include_tasks: go.yml
 #- include: gem-tools.yml

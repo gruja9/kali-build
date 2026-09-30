@@ -6,7 +6,7 @@
 - name: "Installing old BloodHound"
   block:
     - name: "Configuring initial password for Neo4j"
-      shell: "JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64 /usr/share/neo4j/bin/neo4j-admin set-initial-password neo4j"
+      shell: "JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64 /usr/share/neo4j/bin/neo4j-admin dbms set-initial-password neo4jneo"
       become: true
       become_method: sudo
 

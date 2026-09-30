@@ -1,0 +1,23 @@
+---
+- name: "Adding additional repositories via DEB822"
+  block:
+    - name: "Adding Neo4j repo"
+      deb822_repository:
+        name: neo4j
+        types: deb
+        uris: https://debian.neo4j.com
+        suites: stable
+        components: latest
+        signed_by: https://debian.neo4j.com/neotechnology.gpg.key
+      become: true
+
+- name: "Adding additional repositories via DEB files"
+  ansible.builtin.apt:
+    deb: "{{item.url}}"
+  loop:
+    - {url: ""}
+  become: true
+
+- name: "Updating apt cache"
+  apt: update_cache=yes force_apt_get=yes
+  become: true

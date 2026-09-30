@@ -1,14 +1,40 @@
 ---
+- name: "Adding additional repositories"
+  block:
+    - name: "Adding Neo4j repo"
+      deb822_repository:
+        name: neo4j
+        types: deb
+        uris: https://debian.neo4j.com
+        suites: stable
+        components: latest
+        signed_by: https://debian.neo4j.com/neotechnology.gpg.key
+      become: true
+
+    - name: "Adding azure-cli repo"
+      deb822_repository:
+        name: azure-cli
+        types: deb
+        uris: https://packages.microsoft.com/repos/azure-cli/
+        suites: resolute
+        components: main
+        signed_by: https://packages.microsoft.com/keys/microsoft.asc
+      become: true
+
+- name: "Updating apt cache"
+  apt: update_cache=yes force_apt_get=yes
+  become: true
+
 - name: "Installing Packages"
   package:
     name:
       - neo4j
       - gobuster
-      - feroxbuster
-     # - remmina
-      - crowbar
+      #- feroxbuster
+      - remmina
+      #- crowbar
       - sshuttle
-      - joomscan
+      #- joomscan
       - rlwrap
       - libkrb5-dev
       - krb5-user
@@ -19,15 +45,16 @@
       - liblnk-utils
       - ntpsec-ntpdate
       - jq
-      - trufflehog
-      - sprayhound
+      #- trufflehog
+      #- sprayhound
       - wimtools
-      - wmi-client
-      - xtightvncviewer
+      #- wmi-client
+      #- xtightvncviewer
       - braa
       - libpcap-dev
       - azure-cli
-      - lala
+      - nmap
+      - proxychains4
     state: latest
   become: true
   become_method: sudo
