@@ -196,8 +196,8 @@ export DOTNET_ROOT=$HOME/Downloads/dotnet
 export PATH=$PATH:$DOTNET_ROOT
 
 # Tools integrations
-source ~/.local/share/impacket-zsh-integration/krbconf.zsh
-source ~/.local/share/impacket-zsh-integration/proxyconf.zsh
+source ~/.local/share/impacket-shell-integration/krbconf.zsh
+source ~/.local/share/impacket-shell-integration/proxyconf.zsh
 
 # Tools aliases
 alias a="arsenal"

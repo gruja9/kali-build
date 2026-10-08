@@ -25,7 +25,20 @@
     - {repo: "https://github.com/zsh-users/zsh-completions", dest: "zsh-completions"}
     - {repo: "https://github.com/olivierverdier/zsh-git-prompt", dest: "zsh-git-prompt"}
 
+- name: "Installing additional Zsh customizations"
+  git:
+    repo: "{{item.repo}}"
+    dest: "{{ansible_env.HOME}}/.local/share/{{item.dest}}"
+  loop:
+    - {repo: "https://github.com/dadevel/impacket-shell-integration", dest: "impacket-shell-integration"}
+
 - name: "Copying over .zshrc"
   copy:
     src: "{{ role_path }}/files/.zshrc"
     dest: "{{ ansible_env.HOME }}"
+
+- name: "Configuring zsh as default shell"
+  user:
+    name: "{{ansible_user_id}}"
+    shell: /usr/bin/zsh
+  become: true
